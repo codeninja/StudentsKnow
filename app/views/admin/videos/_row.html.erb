@@ -1,0 +1,22 @@
+<tr class="<%= row_counter.modulo(2) == 0 ? "row_light" : "row_dark" %>">
+  <td width=150><%=h row.name %></td>
+  <td width=200><%=h row.description %></td>
+  <td width=300><%=h row.user.login%></td>
+  <td width=300><%=h row.university%></td>
+
+ <td width=150><%=h row.class_number %></td>
+  <td width=200><%=h row.professor %></td>
+  <td width=300><%=h row.subject%></td>
+  <td width=300><%=h row.book_title%></td>
+  <td width=300><%=h row.book_author %></td>
+
+
+
+
+
+
+  <td width=50> <%= link_to "edit",  admin_edit_video_path(row.id) %></td>
+  <td width=50> <%= link_to "delete",  admin_delete_video_path(row.id), :confirm => "This cannot be undone, are you SURE you wish to continue?" %></td>
+
+  </tr>
+

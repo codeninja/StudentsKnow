@@ -1,0 +1,7 @@
+if @result
+  if @affinity
+    page.replace 'favorite_link', "<b>FAVORITED!</b>" 
+  else
+    page.replace 'favorite_link', "<b>UN-FAVORITED!</b>"
+  end
+end

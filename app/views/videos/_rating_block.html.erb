@@ -1,0 +1,30 @@
+<div id="current_rating" class="<%= video.rating_letter.downcase.first %>">
+      <div id="ratings_value" class="ratings_value"><%= video.rating_letter%></div>
+      <div class="ratings_label ">CURRENT RATING</div>
+</div>
+
+
+    <div style="width:330px;">
+        <div id="main_ratings_ul">
+			<% if logged_in? %>
+            <ul class="nav" id="ratings">
+				<% {"A" => 5, "B" => 4, "C" => 3, "D" => 2, "F" => 1}.each_pair do |letter,grade| %>
+					<% if video.can_be_rated_by?(self.current_user) %>
+						<li class="ratings_link">
+							<%= link_to_remote(letter, :url => rate_video_url(:id => video, :rating => grade), 
+														:html => {:class => letter.downcase}, 
+														:complete => visual_effect(:highlight, 'rating_block'))%>
+						</li>
+					<% else %>
+						<li class="voted_ratings_link"><%= link_to_function(letter,"alert('You have already rated this Know')") %></li>
+					<% end %>
+				<% end %>
+			</ul>
+			<% else %>
+				You must <%= link_to("login", login_path)%> or <%= link_to("sign up", login_path)%> to rate videos.
+			<% end %>
+          </div>
+	    <div id="stats">
+	            Views: <%= video.hit_count %>  |  Favorited: <%= video.favorites.count%>  | Comments: <%= video.comments.count%>
+	    </div>
+    </div>

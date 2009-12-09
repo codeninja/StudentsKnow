@@ -1,0 +1,10 @@
+<h1>New Ad Backend</h1>
+
+<%= error_messages_for :adbackend %>
+
+<% form_for @adbackend, :url => admin_adbackends_path do |@f|%>
+    <%= render :partial => "form" %>
+    <%= submit_tag "Create" %>
+    <%= link_to("Cancel", admin_adbackends_path) %>
+<% end %>
+

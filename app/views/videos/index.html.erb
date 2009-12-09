@@ -1,0 +1,36 @@
+
+<div id="left_side">
+	<h1><%= @user.login.upcase + ": " if @user %><%= @category.gsub("&nbsp;",' ').upcase %></h1>
+	<%= render :partial => "layouts/list", :locals => {:section_id => "top_knows_list", :page => @videos, :hide_sort_links => (not @user.nil?), :default_order => 'rating'}%>
+	<% if @videos[:page].empty? %>
+		<h2>None</h2>
+	<% end %>
+</div>
+
+<div id="right_side">
+	<%= render :partial => 'layouts/get_started'%>
+	
+	<% if (@category.gsub("&nbsp;",' ').upcase == "CAREER SERVICES") %>
+		<%= render :partial => "layouts/facebook_promo"%>
+		<%#= render :partial => "layouts/special_ad1"%>
+	<% end %>
+	
+	<% if @top_posters.size > 0%>
+	    <div id="cat_top_posters">
+			<%= render :partial => "home/user_list", :locals => { :section => "TOP POSTERS: #{@category}", 
+															  :section_class => "top_posters", 
+															  :collection => @top_posters,
+															  :top_links => []} unless @user %>
+	    </div>
+	<% end%>
+
+	<% if (@category.gsub("&nbsp;",' ').upcase == "CAREER SERVICES") %>
+		<div class='padded_content' style='text-align:center'>
+			<%#= link_to image_tag( "itunes_promo.gif" ), upload_url %>
+		</div>
+	<% else %>
+		<%= render :partial => "home/right_ads" %>
+		<%= render :partial => "home/right_ads2" %>
+	<% end %>
+</div>
+

@@ -1,0 +1,13 @@
+<p><label for="title">Email</label>
+<% unless params[:email].blank? %>
+	<%= f.text_field :email, {:size => 20, :value=> params[:email][:email]}  %>
+<% else %>
+	<%= f.text_field :email, {:size => 20}  %>
+<% end %>
+
+<p><label for="title">Message</label>
+<% unless params[:email].blank? %>
+	<%= f.text_area :message, {:rows=> 5, :cols => 80, :value => params[:email][:message]}%>
+<% else %>
+	<%= f.text_area :message, {:rows=> 5, :cols => 80} %>
+<% end %>

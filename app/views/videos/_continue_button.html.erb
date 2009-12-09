@@ -1,0 +1,7 @@
+<% message ||= "CONTINUE" %>
+
+<a href="<%= video_path(video) if video %>" id="continue_button" class="button<%= ' disabled_button' unless video %>" style="display: none;">
+	<span id="continue_button_message"><%= message %></span>
+	<span id="continue_button_progress" style="text-align: right;">&nbsp;</span>
+	<%= image_tag("progress_green_gray.gif", :style => "display: none;", :id => 'continue_button_animation')%>
+</a>

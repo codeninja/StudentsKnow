@@ -1,0 +1,3 @@
+page.insert_html :top, "comment_#{@comment.id}_comments", :partial => "videos/comment", :locals => {:comment => @created_comment}
+page << "toggle_comment_reply_link(#{@comment.id})"
+page << "$$('#comment_comment').each(function(e){e.value = ''});"

@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+tags_001:
+    name: Cat1
+    is_category: 1
+    description: cat 1 cat
+tags_002:
+    name: Cat2
+    is_category: 1
+    description: cat 2 cat
+tags_003:
+    name: Cat3
+    is_category: 1
+    description: cat 3 cat
+
+
+
+

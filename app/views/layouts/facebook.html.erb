@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <%= @rss_feed_html %>
+  <title>Students Know - <%= @page_title  %></title>
+    <%= stylesheet_link_tag 'main', 'facebook' %>
+	<%= javascript_include_tag :defaults%>
+	<%= javascript_include_tag 'pop_up_menu' %>
+
+</head>
+	<body>
+		<div id="fb_content">  
+			<%= link_to(image_tag("logo.gif"), "http://www.studentsknow.com", :target => "_BLANK") %>
+			<%= render :partial => 'facebook/nav' unless params[:action] == 'signup'%>
+			<%= yield  %>
+	    </div>
+	</body>
+</html>

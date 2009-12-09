@@ -1,0 +1,2 @@
+page.insert_html :top, "video_comments_list", :partial => "videos/comment", :locals => {:comment => @created_comment}
+page << "$('comment_comment').value = '';"

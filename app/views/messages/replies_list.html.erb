@@ -1,0 +1,11 @@
+
+
+<div id="replies_list_heading">
+	<h1>Original message</h1>
+	<p style="padding-left: 5px;"><b><%= @message.topic%></b></p>
+	<p><%= @message.data %></p>
+	<div id="error_area"> </div>
+	<div id="replies_list">
+	     <%= render :partial => "replies_list_table", :locals => {:replies => @replies }%>
+	</div>
+</div>

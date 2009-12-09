@@ -1,0 +1,21 @@
+<div id="message_center">
+        <h2 style="margin: 10px; margin-top: 0;">The StudentsKnow Message Board</h2>
+	<div id="error_area"></div>	
+	<div id="message_board">
+		<%= render :partial => "messages/category", :collection => @categories %>
+		<div id="message_board_ads_left">
+			<div id="message_board_left_ad_1" class="ad_div"><%= Ad.page(:message_board).zone(:left_1).get.code %></div>
+			<div id="message_board_left_ad_2" class="ad_div"><%= Ad.page(:message_board).zone(:left_2).get.code %></div>
+		</div>
+	</div>
+	<div id="message_board_ads">
+		<div class="ad_div"><%= Ad.page(:message_board).zone(:right_top).get.code %></div>
+		<div class="ad_div"><div style="height: 30px;"><!-- --></div></div>
+		<%= Ad.page(:message_board).zone(:right_bottom).get.code %>
+	</div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	expand_collapse("mb_threads_<%=  @recent_category.id %>","mb_threads_<%= @recent_category.id %>_comment_expand_collapse_link");
+</script>
+

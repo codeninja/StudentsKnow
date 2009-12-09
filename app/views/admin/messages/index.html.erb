@@ -1,0 +1,53 @@
+<h1>Manage Messages</h1>
+
+         <%= render :partial => "admin/messages/messages_search" %>
+         
+<%= render :partial => "admin/messages/cat_nav"%>
+         
+<% if request.post? %>
+    <div id="message_center">
+
+        <div id="message_board">
+        
+        <% if @cat.nil? || (@search_all != 0) %>
+          <h1>Search Results in all categories</h1>
+        <% else %>
+                <h1>Search Results in category <%= @cat.name.capitalize %></h1>
+        <% end %>
+
+
+
+            <table >
+                <tr class="section_heading">
+                  <td class="cat_heading_name">Topic</td><td>Category</td><td class="posted_heading_by" >POSTED BY</td><td class="cat_heading_replies">REPLIES</td><td class="cat_heading_date">DATE POSTED</td>
+                </tr>
+                <% for message in @search_messages %>
+                    <tr>
+                      <td class="cat_name"><%= link_to message.topic[0..50] , admin_replies_list_path(message.id) %></td>
+					  <td><%= link_to message.category, admin_messages_path(:id => message.category_id(message.category)) %></td>
+					  <td class="posted_by"><%=message.user.login.capitalize %></td>
+					  <td class="cat_replies"><%= link_to(message.comments.size.to_s, admin_replies_list_path(message.id))%></td>
+					   <td class="cat_date"> <%= show_time(message.created_at) %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+
+    </div>
+<% end %>
+
+
+
+
+<% if params[:id] %>
+    <% unless params[:id] == "0" %>
+        <% @cat = Tag.find(params[:id])%>
+   
+  
+        <%= render :partial => "show_cat_messages"%>
+     <% end %>
+  
+<% end %>
+
+
+

@@ -1,0 +1,24 @@
+<% hide_sort_links ||= false %>
+<% order = (page.is_a?(Hash) ? page[:order] : default_order.to_s) %>
+<% order_hash = { 'date' => 'NEW&nbsp;KNOWS', 'rating' => 'TOP&nbsp;KNOWS', 'views' => 'MOST&nbsp;VIEWED', 'comments' => 'MOST&nbsp;DISCUSSED'}%>
+<%# order_hash.delete_if{|k,v| k == default_order }%>
+<% header_name = (((order != default_order) and !(hide_sort_links)) ? order_hash[order] : section_id.sub('_list','').gsub(/_/,' ').upcase) %>
+
+
+<%# if order == default_order %>
+	<li class="heading">
+		<%=  header_name %> 
+		<%#= order_hash[order] if order_hash[order] unless order == 'date'%>
+	</li>
+<%# end %>
+
+<% unless hide_sort_links %>
+	<% order_hash.each_pair do |key,value| %>
+		<% unless key == order %>
+			<li>
+				<%= link_to_remote(value, :url => paginate_section_url(options_for_pagination(page, section_id, {:order => key, :page => 1, :default_order => default_order})), 
+										  :html => {:class => "#{order == key ? 'active_sort' : 'inactive_sort'}"} )  %>
+			</li>
+		<% end %>
+	<% end %>
+<% end %>

@@ -1,0 +1,25 @@
+# == Schema Information
+# Schema version: 57
+#
+# Table name: azoogle_offers
+#
+#  id                 :integer(11)     not null, primary key
+#  azoogle_account_id :integer(11)     
+#  offer_id           :integer(11)     
+#  title              :string(255)     
+#  description        :string(255)     
+#  notices            :string(255)     
+#  open_date          :date            
+#  expiry_date        :date            
+#  amount             :integer(10)     
+#  created_at         :datetime        
+#  updated_at         :datetime        
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

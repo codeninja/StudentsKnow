@@ -1,0 +1,39 @@
+
+    <div id="comment">
+        <h2>Create your Response</h2>
+       <%= error_messages_for :comment %>
+        <% remote_form_for :comment, :url => save_response_path(:id => @message.id, :user_id => self.current_user.id)  do |f| -%>
+            <%= render :partial => "messages/reply_form", :locals=>{:f => f} %>
+                <%= submit_tag 'Create Reply' %>
+        <% end %>
+     </div>
+
+<div id="comments_table">
+    <h1>Replies List</h1>
+
+    <table>
+      <tr class="section_heading">
+        <td width=200px>TITLE (click on title to view)</td><td width=150px style="text-align:center;" >POSTED BY</td><td width=500px>COMMENT</td><td width=100px style="text-align:center;">DATE POSTED</td>
+      </tr>
+
+    <% for reply in @replies %>
+      <tr>
+      <td><%= link_to(reply.title[0..30], show_reply_path(reply.id), :title => "Click to see details for '" + reply.title + "'" )%></td><td style="text-align:center;"><%= reply.user.login.capitalize %></td><td><%= reply.comment[0..60] %> <% if reply.comment.size > 60 %> ... <% end %></td><td style="text-align:center;"> 
+    <%= show_time(reply.created_at) %>
+
+
+
+      </td>
+
+      </tr>
+    <% end %>
+    </table>
+</div>
+
+    <%#= will_paginate @replies%>
+    <br/>
+
+<div id="back">
+    <%= link_to 'Back to Message Board', messages_path %>
+</div>
+

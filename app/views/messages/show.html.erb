@@ -1,0 +1,41 @@
+<div id="message_center">
+	<div id="error_area"></div>	
+	<div id="message_board">
+
+                <div class="mb_category_header">
+                    <span class="mb_header_name_field"><%= link_to(strip_dashes(@category.name), message_category_path(@category.name), :class => "message_back_link")%></span>
+                </div>
+		
+                <%= render :partial => "messages/message", :locals => {:message => @message}%>
+
+				<% if logged_in? %>
+                <div id="new_comment">
+                    <% form_for :comment, @comment, :url => create_message_comment_path(:message_id => @message.id) do |@f|%>
+                        <%= render :partial => "messages/comment_form" %>
+                            <div class="submit" style="margin-left: 400px;">
+                              <%= submit_tag("Submit")%>
+                              <%= link_to_function("Cancel", 
+                                                   "$('comment_comment').value=''", 
+                                                    :style => 'vertical-align: top; font-size: 1em;')%>
+                            </div>
+                    <% end %>
+                </div>
+				<% else %>
+					<br>
+					<h2 align="center">You must <%= link_to("login or sign up", login_url)%> to post messages.</h2>
+					<br>
+				<% end %>
+  
+                <%= render :partial => "messages/comment", :collection => @message.comments.sort_by{|c| c.created_at}.reverse %>
+                
+		<div id="message_board_ads_left">
+			<div id="message_board_left_ad_1" class="ad_div"><%= @message_board_ads_left %></div>
+			<div id="message_board_left_ad_2" class="ad_div"><%= @message_board_ads_left2 %></div>
+		</div>
+	</div>
+	<div id="message_board_ads">
+		<div class="ad_div"><%= @message_board_ads%></div>
+		<div class="ad_div"><div style="height: 30px;"><!-- --></div></div>
+		<%= @message_board_ads2 %>
+	</div>
+</div>

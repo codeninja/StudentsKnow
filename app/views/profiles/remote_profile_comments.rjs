@@ -1,0 +1,1 @@
+page.replace_html "profile_comments", :partial => "profile_comments", :locals => {:profile => @profile}

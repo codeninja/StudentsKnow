@@ -1,0 +1,14 @@
+<div id="comment_form">
+	<% if logged_in? %>
+		<%= error_messages_for :comment %>
+	 	<% remote_form_for :comment, :url => remote_save_video_comment_path(:id => @video.id)  do |f| -%>
+	        <%= render :partial => "videos/comment_form", :locals=>{:f => f} %>
+	    <% end %>
+	<% else %>
+		You must be logged in to post comments <%= link_to("Log In", login_url) %> or <%= link_to("Sign Up", login_url) %>.
+	<% end %>
+</div>
+
+<div id="video_comments_list">
+	<%= render :partial => "videos/comment", :collection => @video.comments.sort_by{|c| c.created_at}.reverse %>
+</div>

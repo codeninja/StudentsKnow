@@ -1,0 +1,25 @@
+
+<div class="list_element" id="video_<%= video.id %>">
+	<div class="related_image">
+		<%= link_to(image_tag(video.videoasset.public_filename(:thumb), :border => 0 ), video_path(video))%>
+	</div>
+	<div class="element_info">
+		<span class="uploaded_date">uploaded <%= distance_of_time_in_words_to_now(video.created_at) %> ago</span>
+		<div class="element_title">
+			<span class="element_title"><%= white_list truncate(video.name,35) %> | <%= video.rating_letter %></span><br/>
+			by <%= link_to(video.user.login, user_path(video.user)) %>
+		</div>
+                 
+		<div class="element_desc">
+			<%= white_list truncate(video.description,75) %> 
+		</div>
+		
+		<div class="element_tags">
+            MORE IN: <%= link_to(video.category.upcase.gsub(/-/,'&nbsp;'), videos_cat_path(:category => video.category))%><br/>
+			Tags: <%= video.regular_tags.collect{|t| "#{link_to(t,'#')}"}.join(', ')%>
+		</div>
+	</div>
+	<div class="clear"><!-- --></div>
+
+
+</div>

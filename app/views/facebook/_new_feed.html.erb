@@ -1,0 +1,15 @@
+<ul class='nav section_heading secondary'>
+	<li class="nav heading"><%= @feed_action || "NEW"%> FEED</li>
+</ul>
+
+<p style="margin-left: 15px; color: red">
+	<%= flash[:error]%>
+</p>
+
+<div id="edit_feed">
+	<% form_for :know_feed, @know_feed, :url => {:controller => :facebook, :action => :create_feed}  do |@f| %>
+		<%= render :partial => "facebook/feed_form"%>
+		<%= @f.submit "Create"%> <%= link_to("CANCEL", {:controller => :facebook, :action => :feeds})%>
+	<% end %>
+</div>
+

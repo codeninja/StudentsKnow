@@ -1,0 +1,21 @@
+<h1>Ad Page: <%= h @adpage.name %></h1>
+
+<br/>
+<h2>Configured Zones</h2>
+<%= link_to("Add", new_admin_ad_page_ad_zone_path(:ad_page_id => @adpage.id)) %>
+
+<p>Zones define named places on a page where ads will be placed.<br/>
+These names are used by backend code to fetch ads of the correct size.</p>
+
+<table>
+  <tr class="header">
+    <td>Name</td>
+    <td>Size</td>
+    <td colspan=3>Actions</td>
+  </tr>
+   <%= render :partial => "admin/ad_zones/ad_zone", :collection => @adpage.ad_zones %>
+</table>
+
+
+<br/>
+<%= link_to("Back", admin_ad_pages_path) %>

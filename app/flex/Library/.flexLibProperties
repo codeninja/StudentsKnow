@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="com.coderonin.flvplayer.ui.AdvertView"/>
+<classEntry path="com.coderonin.flvplayer.ui.AdvertPanel"/>
+<classEntry path="com.coderonin.as3et.audioplayer.ui.AudioDisplay"/>
+<classEntry path="com.coderonin.as3et.ui.BevelButton"/>
+<classEntry path="com.coderonin.as3et.audioplayer.ui.MediaControlPanel"/>
+<classEntry path="com.coderonin.flvplayer.ui.AdvertModel"/>
+<classEntry path="com.coderonin.flvplayer.ui.ScrollButton"/>
+<classEntry path="com.coderonin.flvplayer.ui.MediaControlPanel"/>
+<classEntry path="com.coderonin.mp3player.SoundFacade"/>
+<classEntry path="com.coderonin.flvplayer.ui.Button"/>
+<classEntry path="com.coderonin.flvplayer.graphics.RectGradient"/>
+<classEntry path="com.coderonin.flvplayer.util.BandwidthTest"/>
+<classEntry path="com.coderonin.mp3player.SoundControlPanel"/>
+<classEntry path="com.coderonin.as3et.photoviewer.Thumbnail"/>
+<classEntry path="com.coderonin.flvplayer.ui.BevelButton"/>
+<classEntry path="com.coderonin.flvplayer.ui.MetaView"/>
+<classEntry path="com.coderonin.flvplayer.graphics.PlayButton"/>
+<classEntry path="com.coderonin.flvplayer.ui.Slider"/>
+<classEntry path="com.coderonin.Draw"/>
+<classEntry path="com.coderonin.as3et.ui.ScrollButton"/>
+<classEntry path="com.coderonin.flvplayer.ui.MetaModel"/>
+<classEntry path="com.coderonin.as3et.ui.Slider"/>
+<classEntry path="com.coderonin.as3et.photoviewer.SlideshowViewer"/>
+<classEntry path="com.coderonin.flvplayer.ui.SwfButton"/>
+<classEntry path="com.coderonin.flvplayer.ui.ScrubberBar"/>
+<classEntry path="com.coderonin.flvplayer.ui.VolumeControl"/>
+<classEntry path="com.coderonin.flvplayer.ui.AdvertItem"/>
+</includeClasses>
+<includeResources>
+<resourceEntry destPath="com/coderonin/flvplayer/ui/library.fla" sourcePath="com/coderonin/flvplayer/ui/library.fla"/>
+<resourceEntry destPath="com/coderonin/mp3player/library.swf" sourcePath="com/coderonin/mp3player/library.swf"/>
+<resourceEntry destPath="com/coderonin/flvplayer/ui/library.swf" sourcePath="com/coderonin/flvplayer/ui/library.swf"/>
+<resourceEntry destPath="com/coderonin/mp3player/library.fla" sourcePath="com/coderonin/mp3player/library.fla"/>
+</includeResources>
+<namespaceManifests/>
+</flexLibProperties>

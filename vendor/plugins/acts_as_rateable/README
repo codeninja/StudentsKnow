@@ -1,0 +1,54 @@
+Acts As Rateable
+=================
+
+Allow objects to be rated anonymously, or by user.
+Requires Rails 2.0+
+
+== Resources
+
+Install
+ * Run the following command:
+ 
+	# TODO
+ 
+ * Create a new rails migration and add the following self.up and self.down methods
+ 
+ def self.up
+   create_table :ratings do |t|
+     t.integer :value, :default => 3
+     t.integer :user_id, :rateable_id
+     t.string :rateable_type
+     t.timestamps
+   end
+   add_index :ratings, :user_id
+   add_index :ratings, [:rateable_id, :rateable_type]
+ end
+
+ def self.down
+   drop_table :ratings
+ end
+
+== Usage
+ 
+ * Make you ActiveRecord model act as rateable.
+ 
+ class Model < ActiveRecord::Base
+ 	acts_as_rateable
+ end
+ 
+ * Rate an object
+	user_object = User.find(:first)  				# Whatever
+	rateable_object = RateableObject.find(:first)
+	rateable_object.rating => nil					# None yet
+	rateable_object.rate(4) => rating_object		# Success!
+	rateable_object.rate_by_user(3,user_object)		# Success!
+	rateable_object.rating => 3.5					# We have a rating!
+	
+
+== Credits
+
+Cosmin Radoi - This plugin is heavily influenced by Acts As Commentable
+
+== More
+
+# TODO

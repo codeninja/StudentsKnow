@@ -1,0 +1,10 @@
+<div id="send_to_friends">
+
+		<h2>Use this form to send an email about "<%= @video.name %>" to your friends: </h2>
+		
+	    <% form_for :email, :url => send_to_friend_path(@video.id) do |f| -%>
+				<%= render :partial => "send_email", :locals => {:f => f}%>
+	            <%= submit_tag 'Send Message' %>
+	    <% end -%>
+</div>
+

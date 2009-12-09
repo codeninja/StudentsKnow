@@ -1,0 +1,37 @@
+<h1 style="margin-bottom: 0">Create an Account or Login</h1>
+<p style="margin-left: 25px"><i>(You wont have to do this again)</i></p>
+<br>
+
+<p style="margin-left: 15px; color: red">
+	<%= flash[:login_error]%>
+</p>
+
+<h1>Login</h1>
+<% form_for @user, :url => {:action => :do_login} do |f| %>
+	<p><label style="margin-top: 10px">Username:</label><br/>
+		<%= f.text_field :login%>
+	</p>
+	<p><label style="margin-top: 10px">Password:</label><br/>
+		<%= f.password_field :password%>
+	</p>		
+	<%= submit_tag "Login", :style => "margin-left: 350px"%>
+<% end %>
+
+
+<h1>Sign Up</h1>
+<%= error_messages_for :user %>
+<% form_for @user, :url => {:action => :do_signup} do |f| %>
+	<p><label style="margin-top: 10px">Username:</label><br/>
+		<%= f.text_field :login%>
+	</p>
+	<p><label style="margin-top: 10px">Email:</label><br/>
+		<%= f.text_field :email%>
+	</p>
+	<p><label style="margin-top: 10px">Password:</label><br/>
+		<%= f.password_field :password%>
+	</p>
+	<p><label style="margin-top: 10px">Confirm Pass:</label><br/>
+		<%= f.password_field :password_confirmation%>
+	</p>		
+	<%= submit_tag "Sign Up", :style => "margin-left: 350px"%>
+<% end %>

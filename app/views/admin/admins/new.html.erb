@@ -1,0 +1,10 @@
+<div id="signup_form" style='margin-left: 50px; width: 400px;'>
+    <% form_for :admin, :url => admin_create_path do |f| -%>
+            <h1>Create new Admin Account</h1>
+            <%= error_messages_for :admin %>
+            <%= render :partial => 'admin/admins/form', :locals=>{:f => f} %>
+
+            <%= submit_tag 'Create New Admin',{:class => 'submit'}%>
+    <% end -%>
+<div style="clear:both;"><!-- --></div>
+</div>

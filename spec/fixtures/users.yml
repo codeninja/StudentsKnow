@@ -1,0 +1,63 @@
+## users
+
+users_001: 
+  salt: e6307c85c232f590a11717347a15906ad272566a
+  updated_at: 2007-06-13 22:12:23
+  crypted_password: 0061bce11fbf9389e494fc63591c8e96f02fcb26
+  remember_token_expires_at: 
+  id: "1"
+  remember_token: 
+  login: testuser
+  created_at: 2007-06-12 20:23:50
+  email: testuser@localhost
+users_002: 
+  salt: 31bc7d0a5a6d2d3d5056354e2dca01025cf90378
+  updated_at: 2007-06-12 20:23:52
+  crypted_password: 84a80335b8ae0b3eaabf90fa3d63fa50f54fd3d7
+  remember_token_expires_at: 
+  id: "2"
+  remember_token: 
+  login: zzzedris550
+  created_at: 2007-06-12 20:23:51
+  email: zzzedris550@localhost
+users_003: 
+  salt: 54cc2fd7040cd9686b538b691e76d426d36b15d2
+  updated_at: 2007-06-12 20:23:53
+  crypted_password: 998540a77f18860a61494b74c1a222300cd262b1
+  remember_token_expires_at: 
+  id: "3"
+  remember_token: 
+  login: zzzkathleen835
+  created_at: 2007-06-12 20:23:51
+  email: zzzkathleen835@localhost
+  activated_at: 2007-06-12 20:23:51
+users_004: 
+  salt: 8fe69e42a652829b80a050abb7c014c0172447b9
+  updated_at: 2007-06-12 20:23:53
+  crypted_password: 1271e2afd567c02e1c8cbaba1b354e16a89d1386
+  remember_token_expires_at: 
+  id: "4"
+  remember_token: 
+  login: zzzjasper373
+  created_at: 2007-06-12 20:23:52
+  email: zzzjasper373@localhost
+users_005: 
+  salt: e5e134b65d691262b3abcbee1893be23bf97233a
+  updated_at: 2007-06-12 20:23:53
+  crypted_password: c31918f66043b84d2411fbf8dbbf80abf3f478aa
+  remember_token_expires_at: 
+  id: "5"
+  remember_token: 
+  login: zzztabetha106
+  created_at: 2007-06-12 20:23:52
+  email: zzztabetha106@localhost
+users_006: 
+  salt: 147daa88ab7d68514d9d585e7ea8f9c438c10998
+  updated_at: 2007-06-12 20:23:53
+  crypted_password: 0adf67ada6058b13acdc9370711783f1636849e2
+  remember_token_expires_at: 
+  id: "6"
+  remember_token: 
+  login: zzzstanley843
+  created_at: 2007-06-12 20:23:52
+  email: zzzstanley843@localhost

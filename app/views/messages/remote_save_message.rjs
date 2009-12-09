@@ -1,0 +1,8 @@
+if @saved
+  page.replace_html "cat_#{@cat.id}_error_area", ""
+  page.replace_html "cat_#{@cat.id}", ""
+  page.replace_html "cat_rows_#{@cat.id}", :partial => "messages/cat_table_rows_data", :locals => {:cat => @cat, :messages => @messages}
+  page.visual_effect :highlight, "#{@cat.name}",  :duration => 1.25
+else
+   page.replace_html "cat_#{@cat.id}_error_area",  :partial => "messages/message_error_messages", :locals => {:message => @message}
+end

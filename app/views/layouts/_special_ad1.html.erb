@@ -1,0 +1,152 @@
+<ul class="nav section_heading">
+  <li class="heading">SEARCH JOBS & INTERNSHIPS ( by<%= link_to("MonsterTRAK.com", "http://clk.atdmt.com/MON/go/131220048/direct/01/", :target => "_blank" )%>)</li>
+</ul>
+<img src="http://view.atdmt.com/MON/view/131220047/direct/01/"/>
+
+<center><%= link_to(image_tag("monster_trak_noeye.png", :style => "padding: 5px;"), "http://clk.atdmt.com/MON/go/131220047/direct/01/", :target => "_blank")%></center>
+
+<form method="post" id="seeker_search" action="http://www.monstertrak.com/search/jobs/list" target="_blank">
+  
+  <div class="floatleft">
+  
+  
+  <div id="search_title">
+    
+    
+    <!-- <img alt="Why MonsterTRAK?" src="http://media.monster.com/trak/public/images/search_jobs_internships.gif?1199424199" /><div class="clear"></div> -->
+
+  </div> 
+  
+  
+  
+  
+  
+  
+  <span style="font-size: 9pt;font-weight: bold;">Keyword Search:</span><div class="clear:right;"></div>
+  
+  <input class="txtKeywords" id="keyword_field" maxlength="100" name="query[keywords]" type="text" value="Keyword(s)" />
+  
+  <select id="query_match" name="query[match]" style="width: 160px; margin: 5px;"><option value="all" selected="selected">Match all keywords</option>
+  <option value="any">Match any keyword</option></select>
+  
+  
+  
+  
+  <div id="basicSearch" class="top10padding">
+    <script type="text/javascript">
+        //<![CDATA[
+        Event.observe('keyword_field', 'focus', function(e){ if($('keyword_field').value == 'Keyword(s)') $('keyword_field').clear();})
+        //]]>
+    </script>
+    
+    <table height="100">
+      <tr>
+        <td valign="middle"></td>
+        <td></td>
+        <td rowspan="3" class="searchButton">
+          <input class="noborder" id="searchButton" src="http://media.monster.com/trak/public/images/btn_search2.gif?1190252160" type="image" />
+          <br />
+          <div class="top10padding">
+            <a href="http://clk.atdmt.com/MON/go/131220046/direct/01/" target="_blank">Advanced Search</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td valign="middle"><span style="font-size: 9pt;">Category:</span></td><td><select id="query_job_category" name="query[job_category]"><option value="all">All</option>
+            <option value="1">Accounting/Finance</option>
+            <option value="11">Administrative/Clerical</option>
+            <option value="24">Building Construction/Ski...</option>
+            <option value="14">Business/Strategic Manage...</option>
+            <option value="3">Creative/Design</option>
+            
+            <option value="19">Customer Support/Client Care</option>
+            <option value="22">Editorial/Writing</option>
+            <option value="18">Engineering</option>
+            <option value="21">Food Services/Hospitality</option>
+            <option value="13">Human Resources</option>
+            <option value="10">IT/Software Development</option>
+            <option value="17">Installation/Maintenance/...</option>
+            <option value="12">Legal</option>
+            <option value="16">Logistics/Transportation</option>
+            
+            <option value="23">Marketing/Product</option>
+            <option value="15">Medical/Health</option>
+            <option value="7">Other</option>
+            <option value="9">Production/Operations</option>
+            <option value="6">Project/Program Management</option>
+            <option value="5">Quality Assurance/Safety</option>
+            <option value="20">R&amp;D/Science</option>
+            <option value="2">Sales/Business Development</option>
+            
+            <option value="8">Security/Protective Services</option>
+      <option value="4">Training/Instruction</option></select></td></tr>	
+      <tr><td valign="middle"><span style="font-size: 9pt;">Location:</span></td><td><select id="query_state" name="query[state]"><option value="all">All</option>
+            <option value="1">Alabama</option>
+            <option value="2">Alaska</option>
+            <option value="3">Arizona</option>
+            <option value="4">Arkansas</option>
+            <option value="5">California</option>
+            
+            <option value="6">Colorado</option>
+            <option value="7">Connecticut</option>
+            <option value="8">Delaware</option>
+            <option value="51">District of Columbia</option>
+            <option value="9">Florida</option>
+            <option value="10">Georgia</option>
+            <option value="11">Hawaii</option>
+            <option value="12">Idaho</option>
+            <option value="13">Illinois</option>
+            
+            <option value="14">Indiana</option>
+            <option value="15">Iowa</option>
+            <option value="16">Kansas</option>
+            <option value="17">Kentucky</option>
+            <option value="18">Louisiana</option>
+            <option value="19">Maine</option>
+            <option value="20">Maryland</option>
+            <option value="21">Massachusetts</option>
+            <option value="22">Michigan</option>
+            
+            <option value="23">Minnesota</option>
+            <option value="24">Mississippi</option>
+            <option value="25">Missouri</option>
+            <option value="26">Montana</option>
+            <option value="27">Nebraska</option>
+            <option value="28">Nevada</option>
+            <option value="29">New Hampshire</option>
+            <option value="30">New Jersey</option>
+            <option value="31">New Mexico</option>
+            
+            <option value="32">New York</option>
+            <option value="33">North Carolina</option>
+            <option value="34">North Dakota</option>
+            <option value="35">Ohio</option>
+            <option value="36">Oklahoma</option>
+            <option value="37">Oregon</option>
+            <option value="38">Pennsylvania</option>
+            <option value="39">Rhode Island</option>
+            <option value="40">South Carolina</option>
+            
+            <option value="41">South Dakota</option>
+            <option value="42">Tennessee</option>
+            <option value="43">Texas</option>
+            <option value="44">Utah</option>
+            <option value="45">Vermont</option>
+            <option value="46">Virginia</option>
+            <option value="47">Washington</option>
+            <option value="48">West Virginia</option>
+            <option value="49">Wisconsin</option>
+            
+      <option value="50">Wyoming</option></select></td></tr>		
+    </table>
+    
+  </div>
+  
+  
+  
+  <input id="home" name="home" type="hidden" value="unrecognized" />
+  
+</form>
+</div><!-- end floatleft -->
+
+</form>

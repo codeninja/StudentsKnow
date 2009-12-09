@@ -1,0 +1,20 @@
+<div class="tabs">
+<ul class="toggle_tabs">
+	<li class="<%= @active_tab == "browse" ? "fb_active" : 'inactive'%>"><%= link_to("Browse", {:action => :browse})%></li>
+	
+	<li class="<%= @active_tab == "my_videos" ? "fb_active" : 'inactive'%>"><%= link_to("My Videos", {:action => :my_videos})%></li>
+	
+	<li class="<%= @active_tab == "feeds" ? "fb_active" : 'inactive'%>"><%= link_to("Feeds", {:action => :feeds})%></li>
+	
+	<li class="<%= @active_tab == "account" ? "fb_active" : 'inactive'%>"><%= link_to("Account", {:action => :account})%></li>
+	
+	<li class="<%= @active_tab == "about" ? "fb_active" : 'inactive'%>"><%= link_to("About", {:action => :about})%></li>
+	
+	<li class="<%= @active_tab == "invite" ? "fb_active" : 'inactive'%>"><%= link_to("Invite Friends", "http://apps.facebook.com/studentsknow/invite_friends?fb_force_mode=fbml", :target => "_top")%></li>
+	
+	<% unless @fb_user.has_added_app == "1"%>
+		<li class="<%= @active_tab == "add" ? "fb_active" : 'inactive'%>"><%= link_to("Add Application", "http://www.facebook.com/apps/application.php?id=16264296812", :target => "_top")%></li>
+	<% end %>
+	
+</ul>
+</div>

@@ -1,0 +1,29 @@
+<div id="login_form" style='float:left; width: 400px;'>
+	<% form_tag admin_session_path do -%>
+
+	    <h1>Login to the Admin System</h1>
+            <br/><br/>
+	    <label for="login">Login:</label>
+	    <%= text_field_tag('login', nil, :size => 20 )%>
+
+
+	    <label for="password">Password:</label>
+	    <%= password_field_tag( 'password', nil, :size => 20) %>
+
+
+
+	    <!-- Uncomment this if you want this functionality  -->
+
+  <!-- 
+	    <p><label for="remember_me">Remember me:</label>
+	    <%#= check_box_tag 'remember_me' %></p> 
+  -->
+	    <div style="clear:both"></div>
+	      <%= submit_tag 'Log in', {:class => 'submit'}  %>
+
+	<% end -%>
+
+	<div style="clear:both;"><!-- --></div>
+</div>
+	
+

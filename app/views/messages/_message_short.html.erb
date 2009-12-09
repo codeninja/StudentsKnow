@@ -1,0 +1,8 @@
+<% message = message_short if message_short%>
+<div class="mb_message">
+	<span class="mb_message_title"><%= link_to(truncate(message.topic, 40), message_path(message.id)) %></span>
+	<span class="mb_message_field"><%= link_to(message.user.login, user_path(message.user)) if message.user%></span>
+	<span class="mb_message_field"><%= message.comments.count%></span>
+	<span class="mb_message_field"><%= message.created_at.to_s(:short)%></span>
+</div>
+<div class="clear"><!-- --></div>

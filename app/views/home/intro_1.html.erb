@@ -1,0 +1,49 @@
+
+
+<div style="width: 960px; texta-align: center">
+		<div class="welcome">
+				WELCOME TO STUDENTSKNOW.COM!
+		</div>
+	
+		<div class="cle_block">
+			<%= image_tag("create_green.png")%>
+			<p><span class="white">CREATE:</span>
+			Make a video of what you know, have read or learned in class.</p>
+		</div>
+		
+		<div class="cle_block">
+			<%= image_tag("learn_green.png")%>
+			<p  style="padding-top: 0"><span class="white">LEARN:</span>
+			Watch videos created by students about your classes, books, and notes.</p>
+		</div>
+		
+		<div class="cle_block">
+			<%= image_tag("earn_green.png")%>
+			<p><span class="white">EARN:</span>
+			Make money by sharing videos with others or creating your own.</p>
+		</div>
+		
+		<div class="intro_info">
+			No signup/membership fees or any garbage like that. Just students (and tutors)
+			helping each other get smarter quicker!
+		</div>
+		
+		<center>
+		<%= link_to("START NOW!", "http://www.studentsknow.com", :class => "start_link")%>
+		</center>
+</div>
+
+<style type="text/css">
+	div#site_content { background: #66cc33; color: #2C2D2D; background-image: url(/images/intro_bg.png);}
+	#footer , #footer a { color: white; }
+	div#content_top_rounded_corners { background-image: url(/images/content_top_curve_green.png); }
+	span.white{ color: white;}
+	div.welcome {margin-bottom: 30px;font-size:2.5em; text-align: center; padding-top: 30px;}
+	p { font-size: 1.5em;}
+	div.cle_block { width: 450px; height: 90px; font-size: 1.5em; margin: 0px auto; line-height: 1.3em; }
+	div.cle_block img { float: left; vertical-align: middle;}
+	div.cle_block p {font-size: 1em; padding-top: 10px;}
+	div.intro_info { font-size: 1.2em; text-align: center; width: 350px; margin: 30px auto;}
+	a.start_link {color: white; text-decoration: underline; font-size: 1.8em;}
+	a.start_link:hover { background: none; color: green;}
+</style>

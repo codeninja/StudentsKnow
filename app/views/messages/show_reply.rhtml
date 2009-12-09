@@ -1,0 +1,11 @@
+<div id="reply">
+  <p><b> <%= @reply.title%></b></p>
+	<p>Posted by: <b> <%= @reply.user.login%></b></p>
+
+    <div id="reply_contet">
+        <%= @reply.comment%>
+    </div>
+
+	<%= link_to "Back to Replies List", replies_list_path(@reply.commentable_id)%>
+</div>
+

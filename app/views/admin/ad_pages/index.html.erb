@@ -1,0 +1,28 @@
+<h1>Ad Pages</h1>
+<%= link_to("New", new_admin_ad_page_path) %>
+
+<p>Ad pages define named places on the site.</p>
+
+<h2>EDIT AT YOUR OWN RISK!!!!</h2>
+
+<table>
+  <tr class="header">
+    <td>
+      Name
+    </td>
+    <td>
+      Actions
+    </td>
+    <% @adpages.each do |adpage| %>
+      <tr>
+        <td><%= h adpage.name %></td>
+        <td>
+          <%= link_to("Show", admin_ad_page_path(adpage)) %> 
+          <%= link_to("Edit", edit_admin_ad_page_path(adpage)) %> 
+          <%= link_to("Destroy",admin_ad_page_path(adpage), :method => :delete, :confirm => "Are you sure?") %>
+        </td>
+      </tr>
+      
+    <% end %>
+  </tr>
+</table>

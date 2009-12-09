@@ -1,0 +1,1 @@
+page.replace_html "replaceable_comments", :partial => "profiles/replaceable_comments", :locals => {:comments => @comments , :user_logged_in => @user_logged_in, :user => @user}

@@ -1,0 +1,11 @@
+<div id="confirm_delete" style="padding: 30px;">
+	<h1>Delete <%= @video.name%>?</h1>
+	
+	<div class="list">
+		<%= render :partial => "layouts/object", :locals => {:object => @video}%>
+	</div>
+
+<br>
+	<h2><%= link_to("Yes, DELETE!", video_path(@video), :confirm => "You want to delete this video?", :method => :delete)%> | 
+	<%= link_to("No, Cancel.", user_path(self.current_user))%></h2>
+</div>

@@ -1,0 +1,43 @@
+<h1>SYSTEM</h1>
+
+<h3>This page for managing system items </h3>
+
+<div id="system">
+		<fieldset>
+		<h1>Manage user payout rates</h1>
+		<fieldset>
+		<h2>Create a New Rate</h2>
+		<% form_for :rate, :url => admin_system_path do |f| -%>
+				<%= render :partial => "admin/system/form" , :locals => {:f => f }%>
+				<%= submit_tag 'Create Rate' %> </p>
+		<% end %>
+		</fieldset>
+				<fieldset>
+					<% unless @rates.nil? %>
+							<h2>Rates Currently In The System </h2>
+							<ul class="nav">
+								
+								   <li>
+								    	<table>
+											<tr>
+								 				<td class="rate_edit_link"></td>
+												<td class="rate_name"><b>Rate Name</b></td>
+												<td class="rate_rate"><b>Rate</b></td>
+											</tr>
+											<% @rates.each do |rate| %>
+												<tr>
+									           	 <td class="rate_edit_link"><%= link_to "Edit", edit_rate_path(rate.id) %></td>
+													<td class="rate_name"><b><%= rate.rate_name %></b></td>
+													<td class="rate_rate"><%= rate.rate.to_s %></td>
+												</tr>
+											<% end %>
+										</table>
+								   </li>
+								
+							</ul>
+  
+					<% end %>
+				</fieldset>
+
+		</fieldset>
+</div>

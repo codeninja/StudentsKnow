@@ -1,0 +1,9 @@
+<div id="profile">
+    <h2>Create your profile:</h2>
+   <%= error_messages_for :profile %>
+    <% form_for :profile, :url => save_profile_path,  :html => {:multipart => true } do |f| -%>
+        <%= render :partial => "profiles/form", :locals=>{:f => f} %>
+            <div style="clear:both"></div>
+            <%= submit_tag 'Create Profile' %>
+    <% end %>
+ </div>

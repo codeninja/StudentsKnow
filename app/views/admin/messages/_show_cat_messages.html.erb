@@ -1,0 +1,22 @@
+<div id="table">
+<table >
+    <thead>
+                       <tr class="section_heading">
+                         <td class="cat_heading_name"><%= @cat.name%> </td><td class="posted_heading_by" >POSTED BY</td><td class="cat_heading_replies">REPLIES</td><td class="cat_heading_date">DATE POSTED</td><td colspan=2 style="text-align: center;">Actions</td>
+                      </tr>
+   </thead>
+
+                   <%= render_collection_of_partials "row", @messages %>
+</table>   
+</div>
+                       <div class="message_board_footer">
+   
+
+                             <span class="message_paginator">
+
+                                 <%= 
+									# WillPaginate::ViewHelpers.pagination_options[:param_name] = "#{cat.id}"
+									#will_paginate @messages, :remote_options=> {:url => {:action=>'remote_paginate', :cat_id=>cat.id}, :page => params[:page]}
+									will_paginate @messages, :remote_options=> {:url => {:action=>'remote_paginate', :cat_id=>@cat.id }}%>
+                              </span>
+                          </div> 

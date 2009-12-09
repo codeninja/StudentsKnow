@@ -1,0 +1,6 @@
+page << 'upload_completed();'
+page.replace_html :asset_upload, :partial => "videos/upload_success"
+
+if @video and @asset
+    page.replace :continue_button, :partial => "videos/continue_button", :locals => {:video => @video} 
+end

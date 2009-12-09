@@ -1,0 +1,14 @@
+<p>
+	<label style="width: auto; margin: auto; padding: auto; vertical-align: middle; font-weight: bold; ">Feed Name:</label><br/>
+	<%= @f.text_field :name, :style => "line-height: auto; margin-top: -12px; "%><br/>
+</p>
+<ul id="edit_feed_category_list" style="list-style: none;">
+	<li><h2>Select Categories to include in the feed.</h2></li>
+	<%= render :partial => "facebook/checked_category", :collection => know_categories, :locals => {:know_feed => @know_feed} %>
+	<li><input type="checkbox" id="check_all" name="check_all" value="1" style="float: none;" onClick="toggle_categories()"> ALL CATEGORIES</li>
+	<li>
+		<br><b>SPECIFY KEYWORDS (optional*):</b>
+		<%= @f.text_field :filters, :size => 10, :style => "vertical-align: middle"%>
+	</li>
+	<li>* If you choose to specify a keyword, ONLY videos tagged with that keyword verbatim will appear in your feed. Please specify only one keyword per feed.</li>
+</ul><br/>

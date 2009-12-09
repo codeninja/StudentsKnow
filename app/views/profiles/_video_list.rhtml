@@ -1,0 +1,48 @@
+<div id="video_list">
+  
+	<ul class="nav section_heading">
+
+                <li class="<%=video_section_class %>"> <%= video_section %>:</li>
+                <% if video_section == "MY VIDEOS"%>
+                    <li><%= link_to "FEATURED", "" %>  |</li>
+                    <li><%= link_to "MOST VIEWED", "" %>  |</li>
+                    <li><%= link_to "TOP RATED", "" %>  |</li>
+                    <li><%= link_to "MOST DISCUSSED", "" %></li>
+                <% end %>
+        </ul>
+        <% # loops put in one more than max_items %>
+        <% if video_section == "MY VIDEOS"%>
+          <% max_items = 6 %>
+          <% label = "Video" %>
+        <% elsif video_section == "MY PODCASTS"%>
+            <% max_items = 1 %>
+            <% label = "Podcast"%>
+        <% else %>
+            <% max_items = 11 %>
+            <% label = "Favorite"%>
+        <% end %>
+
+	    <% i = 0 %>
+            <% j = 0 %>
+	<table>
+           <tr>
+            <% while j < max_items + 1 %>
+           
+                <% while i < 3 && j < max_items + 1 %> 
+			<td class="video_list_element"><%= render :partial => "profiles/video", :locals => {:type => label }%></td>
+			<% i = i+1 %>
+                        <% j = j+1 %>
+                <% end %>
+                <% i = 0%></tr><tr>
+            <% end %>
+           </tr>
+           
+	</table>
+
+	<div id="video_page_links">
+		<%= link_to "<< PREVIOUS", "" %> | <%= link_to "VIEW ALL", "" %> | <%= link_to "NEXT >>", "" %>
+	</div>
+         <div class="clear"></div>
+</div>
+
+

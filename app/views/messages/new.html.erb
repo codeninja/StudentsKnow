@@ -1,0 +1,30 @@
+<div id="message_center">
+	<div id="error_area"></div>	
+	<div id="message_board">
+		<div class="mb_category" id="category_<%= @category.id%>">
+			<%= render :partial => "messages/category_header", :locals => {:category => @category}%>
+
+                        <div id="new_message">
+                          <h2>Post A Message</h2>
+                          <% form_for :message, @message, :url => create_message_path(:id => @message.id), :method => "put" do |@f| %>
+                            <%= render :partial => "messages/message_form"%>
+                            <div class="submit" style="margin-left: 400px;">
+                              <%= submit_tag("Submit")%>
+                              <%= link_to("Cancel", message_category_path(@category.name), :style => 'vertical-align: top; font-size: 1em;')%>
+                          </div>
+                          <% end%>
+                        </div>
+
+		</div>
+		
+		<div id="message_board_ads_left">
+			<div id="message_board_left_ad_1" class="ad_div"><%= @message_board_ads_left %></div>
+			<div id="message_board_left_ad_2" class="ad_div"><%= @message_board_ads_left2 %></div>
+		</div>
+	</div>
+	<div id="message_board_ads">
+		<div class="ad_div"><%= @message_board_ads%></div>
+		<div class="ad_div"><div style="height: 30px;"><!-- --></div></div>
+		<%= @message_board_ads2 %>
+	</div>
+</div>

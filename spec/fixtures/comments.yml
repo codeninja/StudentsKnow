@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+comments_001:
+    user_id: 4
+    commentable_id: 1
+    commentable_type: Message
+    title: message 1 subject
+    comment: this is the data for message 1
+comments_002:
+    user_id: 4
+    commentable_id: 1
+    commentable_type: Message
+    title: message 1 subject
+    comment: this is the data for message 1
+comments_003:
+    user_id: 4
+    commentable_id: 1
+    commentable_type: Message
+    title: message 1 subject
+    comment: this is the data for message 1
+
+

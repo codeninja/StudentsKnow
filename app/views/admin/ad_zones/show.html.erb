@@ -1,0 +1,5 @@
+<h1><%= @adpage.name %>: Zone <%= @ad_zone.name %></h1>
+
+
+<%= link_to 'Edit', edit_admin_ad_page_ad_zone_path(:ad_page_id => @adpage.id, :id => @ad_zone.id) %> |
+<%= link_to 'Back', admin_ad_page_path(:id => @adpage.id) %>

@@ -1,0 +1,17 @@
+<h1>Listing Ad Zones for <%= h @adpage.name%> </h1>
+
+<%= link_to 'New ad_zone', new_admin_ad_page_ad_zone_path(:ad_page_id => @adpage.id) %> 
+<table>
+  <tr class="header">
+    <td>Name</td>
+    <td>Size</td>
+    <td colspan=3>Actions</td>
+  </tr>
+
+    <%= render :partial => "ad_zone", :collection => @ad_zones %>
+</table>
+
+<br />
+
+
+<%= link_to 'Back', admin_ad_page_path(:id => @adpage.id) %>

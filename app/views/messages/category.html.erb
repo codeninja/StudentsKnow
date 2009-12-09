@@ -1,0 +1,20 @@
+<div id="message_center">
+	<div id="error_area"></div>	
+	<div id="message_board">
+		<div class="mb_category" id="category_<%= @category.id%>">
+			<%= render :partial => "messages/category_header", :locals => {:category => @category}%>
+			<%= render :partial => "messages/new_message", :locals => {:show => @messages.empty?}%>
+			<%= render :partial => "messages/message_short", :collection => @messages, :locals => {:full_text => true}%>
+		</div>
+		
+		<div id="message_board_ads_left">
+			<div id="message_board_left_ad_1" class="ad_div"><%= @message_board_ads_left %></div>
+			<div id="message_board_left_ad_2" class="ad_div"><%= @message_board_ads_left2 %></div>
+		</div>
+	</div>
+	<div id="message_board_ads">
+		<div class="ad_div"><%= @message_board_ads%></div>
+		<div class="ad_div"><div style="height: 30px;"><!-- --></div></div>
+		<%= @message_board_ads2 %>
+	</div>
+</div>

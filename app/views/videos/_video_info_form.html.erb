@@ -1,0 +1,74 @@
+<% all_done ||= false %>
+<% actionurl ||= nil %>
+<%= error_messages_for :video %>
+
+<% if all_done %>
+	<h2>Information Saved</h2>
+	<p>You are finished! Revise your video information if desired, and click the "Continue" button below.</p>
+	<script type="text/javascript">
+		$('continue_button').replace('<%= link_to('CONTINUE', video_path(@video), :id => 'continue_button', :class => 'button')%>');
+	</script>
+<% end %>
+	
+<% remote_form_for(@video, :update => 'asset_info', :url => (actionurl || (video_path(@video.id) if @video.id)) ) do |f| %>
+
+		<%= f.hidden_field :upload_ticket, :value => @ticket_id%>
+			
+		<p>
+			<label for="name" class="required">Name:*</label>
+			<%= f.text_field :name, :onChange => 'hide_continue_button()'%>
+		</p>
+		<p>
+			<label for="description" class="required">Description:*</label>
+			<%= f.text_area :description, :cols => 30, :rows => 3, :onChange => 'hide_continue_button()' %>
+		</p>
+		<p>
+			<label for="tagnames" class="required">Tags:*</label>
+			<%= f.text_field  :tagnames, :value => @video.tagnames.join(', '), :onChange => 'hide_continue_button()' %>
+			<span class="form_comment">
+				(Separate multiple tags with commas.  Tags may contain spaces.).
+			</span>
+		</p>
+		
+		<p>
+			<label for "category" class="required">Category:*</label>
+			<%= f.collection_select(:category, know_categories, :name, :name, {:prompt => true}, :onChange => 'hide_continue_button()')%>
+			</p>
+		
+		<br>
+		<p>
+			<label for="subject">Subject:</label>
+			<%= f.text_field :subject, :onChange => 'hide_continue_button()' %>
+		</p>
+
+        
+		<p>
+			<label for="professor">Professor:</label>
+			<%= f.text_field :professor, :onChange => 'hide_continue_button()'%>
+		</p>
+		<p>
+			<label for="class_number">Class Number:</label>
+			<%= f.text_field :class_number, :onChange => 'hide_continue_button()' %>
+		</p>
+		<p>
+			<label for="book_title">Book Title:</label>
+			<%= f.text_field :book_title, :onChange => 'hide_continue_button()'%>
+		</p>
+		<p>
+			<label for="book_author">Book Author:</label>
+			<%= f.text_field :book_author, :onChange => 'hide_continue_button()' %>
+		</p>
+		<p>
+			<label for="chapter">Chapter:</label>
+			<%= f.text_field :chapter, :onChange => 'hide_continue_button()' %>
+		</p>
+		<p>
+			<label for="isbn">ISBN:</label>
+			<%= f.text_field :isbn, :onChange => 'hide_continue_button()' %>
+		</p>
+
+
+		  <%= f.submit "UPDATE", :class => 'submit'%>
+
+		<div class="clear"><!-- --></div>
+<% end %>

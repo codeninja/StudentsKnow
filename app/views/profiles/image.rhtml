@@ -1,0 +1,5 @@
+<h1></h1>
+
+<%= image_tag(@image.public_filename(:medium)) %>
+
+<%= link_to "Back to Edit Profile", :action => "edit", :id => self.current_user.profile.id%>

@@ -1,0 +1,10 @@
+<% remote_form_for :comment, :url => comment_comment_path(:id => comment.id)  do |f| -%>
+	<p>
+		<%= f.text_area :comment, :rows => 2 %>
+	</p>
+    <%= submit_tag 'Post Reply' %> 
+	<%= link_to_function("Cancel", "toggle_comment_reply_link(#{comment.id})", 
+							:class => "comment_reply_toggle", 
+							:id => "comment_#{comment.id}_hide_reply_link", 
+							:style =>'display: none; vertical-align: top;') %>
+<% end %>

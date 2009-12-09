@@ -1,0 +1,17 @@
+<div id="left_side">
+<div id="contact_content">
+	<ul class="nav section_heading">
+    <li class="heading">CONTACTS:</li>
+  </ul>
+	<ul class="contacts">
+		<li><b>Advertising or Business Inquiries:</b> <%= mail_to("partner@studentsknow.com","partner@studentsknow.com")%></li>
+		<li><b>General Questions:</b> <%= mail_to("info@studentsknow.com","info@studentsknow.com") %></li>
+		<li><b>Content issues:</b> <%= mail_to("dirtyknows@studentsknow.com","dirtyknows@studentsknow.com") %> </li>
+		<li><b>Technical Concerns:</b> <%= mail_to("webmaster@studentsknow.com","webmaster@studentsknow.com") %></li>
+	</ul>
+</div>
+</div>
+
+<div id="right_side">
+	<%= render :partial => 'layouts/get_started' %>
+</div>

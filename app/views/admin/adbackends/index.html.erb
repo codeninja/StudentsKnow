@@ -1,0 +1,23 @@
+<h1>Ad Backends</h1>
+<%= link_to("New", new_admin_adbackend_path) %>
+
+<p>
+  Ad backends are a way of grouping together ads from the same source.
+</p>
+
+<table>
+  <tr class="header">
+    <td>Name</td>
+    <td>Actions</td>
+  </tr>
+<%  @adbackends.each do |ab|%>
+  <tr>
+    <td width="200"><%= link_to((h ab.name), admin_adbackend_path(ab)) %></td>
+    <td>
+      <%= link_to("Show", admin_adbackend_path(ab)) %> 
+      <%= link_to("Edit", edit_admin_adbackend_path(ab)) %> 
+      <%= link_to("Destroy", admin_adbackend_path(ab), :method => :delete, :confirm => "Are you wish you want to delete this ad backend and all of its associated ads?") %>
+    </td>
+  </tr>
+<% end %>
+</table>

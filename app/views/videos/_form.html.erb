@@ -1,0 +1,14 @@
+<div class="form_section" id="asset_upload">
+	<%= render :partial => "videos/asset_form"%>
+</div>
+
+<br/>
+
+<div class="form_section" id="asset_info" style="display: none;">
+	<p style="font-size: 0.9em;">
+	Please fill out the below while your video or podcast is uploading, then hit the update button.
+	</p>
+	<%= render :partial => "videos/video_info_form"%>
+</div>
+
+<%= render :partial => "videos/continue_button", :locals => {:video => nil} %>

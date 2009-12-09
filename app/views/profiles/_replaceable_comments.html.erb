@@ -1,0 +1,17 @@
+	<div>
+      <% for comment in @comments %>
+					<div class="nav profile_comment"> 
+						<% if @user == @user_logged_in %>
+							<p class="remove_profile_comment">
+								<%= link_to_remote "DELETE THIS COMMENT", :url => delete_comment_path(comment.id), :confirm => "OK to delete #{comment.title}?" %>
+							</p>
+				        <% end %>
+						<p>
+							<span class="profile_comment_title"><%= comment.title %></span>
+							<span class = "profile_comment_poster">posted by <%= comment.user.login if comment.user%> </span>
+						</p>
+						<p class="profile_comment_comment"><%= comment.comment %></p>
+						
+					</div>
+	  <% end %>
+	</div>

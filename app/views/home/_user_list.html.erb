@@ -1,0 +1,10 @@
+<ul class="nav section_heading">
+	<li class="heading <%=section_class%>"> <%= section.gsub("&nbsp;",' ').upcase%></li>
+</ul>
+
+<div id='top_posters' class="list padded_content" >
+	<ul class="nav" id="<%= section_class%>_list">
+		<%= render :partial => "layouts/user_thumb", :collection => collection %>
+		<li style="width:100%;clear:both; height:1px; overflow:hidden;">&nbsp;</li>
+	</ul>
+</div>

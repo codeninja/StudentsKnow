@@ -1,0 +1,14 @@
+<div id="search">
+    <% form_for :message_search,  :url => messages_search_path  do |s| %>
+      <span class="message_board_title">
+		Message Board
+		<%= s.text_field :item,  { :onclick => "$('search_item').style.background = '#fff';" }%> 
+		<%= submit_tag("SEARCH MESSAGES", :class=>'gray_submit_message') %></span>
+      <span class="message_board_input">
+        
+      </span>
+        <%#= image_submit_tag("search.png", :class=>'search_img') %>
+        
+
+    <% end %>
+</div>

@@ -1,0 +1,25 @@
+<h1>Crop settings: </h1>
+<br/>
+<table>
+  <tr><td>X1:</td><td><%= params[:crop][:x1]%></td></tr>
+  <tr><td>Y1: </td><td><%= params[:crop][:y1]%></td></tr>
+  <tr><td>X2: </td><td><%= params[:crop][:x2]%></td></tr>
+  <tr><td>Y2: </td><td><%= params[:crop][:y2]%></td></tr>
+  <tr><td>Width:</td><td><%= params[:crop][:width]%></td></tr>
+  <tr><td>Height:</td><td><%= params[:crop][:height]%></td></tr>
+</table>
+<br>
+<h1> Resulting Processed Images</h1>
+<br/>
+<div id="processed_med">
+    <img  src="<%=@saved_pix%>" />
+</div>
+<div id="processed_thumb">
+    <img  src="<%=@saved_thumb%>" />
+  </div>
+
+
+
+
+
+

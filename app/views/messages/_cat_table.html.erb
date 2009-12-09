@@ -1,0 +1,25 @@
+  <div class= "category_table"  >
+             <table style="padding-bottom: 5px;">
+								<% if cat.name == "Site-Feedback" %>
+									<tr class="section_heading_feedback cat_heading_name">
+								<% else %>
+                               		<tr class="section_heading cat_heading_name">
+								<% end %>
+                                    <td class="cat_heading_name"  style="padding-left: 20px;"><%= cat.name.upcase.gsub('-','&nbsp;')%> 	<%= expand_widget(cat.name) %></td>
+									<td class="posted_heading_by cat_heading_small" >POSTED BY</td>
+									<td class="cat_heading_replies cat_heading_small">REPLIES</td>
+									<td class="cat_heading_date cat_heading_small">DATE POSTED</td>
+                               </tr>
+              </table>
+               <div id=<%= cat %> style="display:none;">
+                     
+  
+                           
+                                <span id ="cat_rows_<%=cat.id%>">
+                                    <%= render :partial => "messages/cat_table_rows", :locals => {:cat => cat}%>
+                                </span>
+                   
+                     <div id="cat_<%=cat.id%>"><!-- used for showing the edit form --> </div>
+            </div>
+  
+</div>                    

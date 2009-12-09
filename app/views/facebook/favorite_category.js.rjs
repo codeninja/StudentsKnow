@@ -1,0 +1,5 @@
+if @do_remove
+  page.remove "checked_category_#{@category.id}"
+else
+  page.replace "checked_category_#{@category.id}", :partial => "facebook/checked_category", :locals => {:checked_category => @category}
+end

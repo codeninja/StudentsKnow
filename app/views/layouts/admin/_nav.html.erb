@@ -1,0 +1,21 @@
+<div id="nav" class="nav">
+	<ul class="nav">
+	<% unless self.current_admin == :false %>
+		<li class="login_logout"><%= link_to("LOGOUT", admin_logout_path) %> </li>
+		<%= admin_nav_li("USERS", admin_users_path) %> 
+		<%= admin_nav_li("VIDEOS", admin_videos_path) %> 
+		<%= admin_nav_li("MESSAGES", admin_messages_path) %> 
+		<%= admin_nav_li("SYSTEM", admin_system_path) %> 
+		<%= admin_nav_li("REVENUES", admin_revenues_path) %>
+		<%= admin_nav_li("DIRTIES", admin_dirties_path) %>
+		<%= admin_nav_li("ADS", admin_adbackends_path)%> 
+	<% else %>
+		<li class="login_logout"><%= link_to("LOGIN", admin_login_path) %> </li> 
+	<% end %>
+
+	</ul>
+</div>
+
+<%= render :partial => "layouts/admin/ad_nav" if @ad_admin_active %>
+
+<div class="clear"><!-- --></div>

@@ -1,0 +1,1 @@
+document.write("<%= render(:partial => "videos/player_noscript.html.erb", :locals => {:embedded => true }).gsub(/"/,'\"').gsub(/[\r\n\t]/,' ').gsub(/  +/,' ')%>");

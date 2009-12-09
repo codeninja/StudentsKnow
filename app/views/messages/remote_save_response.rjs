@@ -1,0 +1,7 @@
+if @saved
+  page.replace_html "error_area", ""
+  page.replace_html "replies_list", :partial => "messages/replies_list_table", :locals => {:message => @message, :replies => @replies}
+  page.visual_effect :highlight, "replies_list",  :duration => 0.25
+else
+   page.replace_html "error_area", :partial => "messages/reply_error_messages", :locals => {:comment => @comment}
+end

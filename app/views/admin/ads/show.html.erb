@@ -1,0 +1,31 @@
+<p>
+  Name: <%= @ad.name %>
+</p>
+
+<p>
+  Size: <%= @ad.size %>
+</p>
+
+<p>
+  Width: <%= @ad.width %>
+</p>
+
+<p>
+  Height: <%= @ad.height %>
+</p>
+
+<p>
+	Statistical Weight: <%= @ad.weight%>
+</p>
+
+Code:
+<div>
+  <div style="float: left;"><%= @ad.code %></div>
+  <div style="float: left; width: 300px; padding: 15px;"><%= h @ad.code %></div>
+</div>
+
+<div style="clear: both;"><!-- --></div>
+
+
+<%= link_to("Edit", edit_admin_adbackend_ad_path(:adbackend_id => @adbackend.id)) %>
+<%= link_to("Back", admin_adbackend_path(:id => @adbackend.id)) %>

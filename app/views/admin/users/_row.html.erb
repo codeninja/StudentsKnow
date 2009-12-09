@@ -1,0 +1,13 @@
+<tr class="<%= row_counter.modulo(2) == 0 ? "row_light" : "row_dark" %>">
+  <td width=150><%=h row.login %></td>
+  <td width=200><%=h row.email %></td>
+  
+  <td width=300><%=h row.created_at%></td>
+  <td width=300><%=h row.activated_at%></td>
+  	<td width=30> <%= link_to "Edit",  admin_edit_user_path(row.id) %></td>
+	    <td width=30> <%= link_to "Delete",  admin_delete_user_path(row.id) %></td>
+		<td width=100> <%= link_to "List Videos",  admin_user_videos_path(row.id) %></td>
+
+  </tr>
+
+

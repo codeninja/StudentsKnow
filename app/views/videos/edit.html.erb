@@ -1,0 +1,35 @@
+<h1>Editing <%= @video.name %></h1>
+
+<%= error_messages_for :video %>
+
+<div class="upload_left" id="upload_left">
+
+
+	
+	<div class="form_section" id="asset_upload">
+		<div class="video_thumb"  style="float: left; margin: 10px;">
+			<%= image_tag(@video.asset.public_filename(:thumb))%><br/>
+		</div>
+		<h2>Re-Upload Video</h2>
+		<%= render :partial => "videos/asset_form"%>
+	</div>
+
+
+
+	<br/>
+
+	<div class="form_section" id="asset_info">
+		<h2>Edit Video Information</h2>
+		<%= render :partial => "videos/video_info_form"%>
+	</div>
+
+	<%= render :partial => "videos/continue_button", :locals => {:video => nil} %>
+	<!-- <%= link_to("DONE", video_path(@video), :class => 'button')%> -->
+</div>
+
+<div class="upload_right" id="upload_right">
+	<%= render :partial => "layouts/upload_page_right", :locals => {:filetype => "video"} %>
+</div>
+
+
+

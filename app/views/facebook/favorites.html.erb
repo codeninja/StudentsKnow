@@ -1,0 +1,9 @@
+<div id="favorites">
+	<ul class="nav section_heading">
+		<li><%= link_to("MY VIDEOS", {:controller => :facebook, :action => :my_videos})%></li>
+		<li class="heading">MY FAVORITES</li>
+	</ul>
+	<% @user.favorites.select{|f| !f.favoriteable.is_a?(Tag)}.sort_by{|f| f.created_at}.reverse.each do |fav| %>
+		<%= render :partial => "facebook/object", :locals => {:object => fav.favoriteable, :do_remove => true}%>
+	<% end%>
+</div>

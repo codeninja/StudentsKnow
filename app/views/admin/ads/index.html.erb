@@ -1,0 +1,22 @@
+<h1>Ad Administration</h1>
+<br/>
+
+<% Adbackend.find(:all).each do |adbackend| %>
+  <center><h2><%= adbackend.name %></h2></center>
+<table class="offer_table">
+  <tr class="header">
+    <th>Name</th>
+    <th>Size</th>
+    <th>W</th>
+    <th>H</th>
+	<th>Weight</th>
+    <th>Text</th>
+    <th>Code</th>
+    <th>Actions</th>
+  </tr>
+  <tr>
+    <%= render :partial => "ad", :collection => adbackend.ads %>
+  </tr>
+  
+</table>
+<% end %>

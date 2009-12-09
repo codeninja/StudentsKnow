@@ -1,0 +1,1 @@
+page.replace_html "cat_#{@cat.id}", :partial => "messages/create"

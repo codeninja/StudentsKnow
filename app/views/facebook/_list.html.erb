@@ -1,0 +1,24 @@
+<% hide_sort_links ||= false %>
+<% default_order ||= 'date'%>
+
+<ul id="<%= section_id %>_heading" class="nav section_heading">
+	<%= render :partial => 'facebook/list_heading', :locals => {:page => page, :section_id => section_id, :hide_sort_links => hide_sort_links, :default_order => default_order}%>
+</ul>
+<% if page.is_a?(Hash) %>
+	<div id="<%= section_id %>_page_links" class="page_links">
+		<%= render :partial => "facebook/pagination_links", :locals => {:section_id => section_id, :page => page} %>
+	</div>
+<% end %>
+
+<% if @category  %>
+	<h2 class="fb_category_heading"><%= @category.upcase.gsub('-','&nbsp;')%> <%= link_to("(Browse All)", {:action => :browse})%></h2>
+<% end%>
+
+<div id="<%= section_id %>" class="list">
+	
+    <div id="<%= section_id %>_list">
+        <%= render :partial => "facebook/object", :collection => (page.is_a?(Hash) ? page[:page] : page) %>
+    </div>
+
+
+</div>

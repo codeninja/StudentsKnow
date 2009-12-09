@@ -1,0 +1,20 @@
+<h1>Editing message</h1>
+
+<%= error_messages_for :message %>
+
+<% form_for :message, :url => admin_edit_message_path do |f| %>
+<p><label for="topic">Topic</label>
+<%= text_field :message, :topic %></p>
+
+<p><label for="data">Your thoughts </label>
+<%= text_area :message, :data, :cols => 50, :rows => 10  %></p>
+
+
+  <p>
+    <%= submit_tag "Update" %>
+    <%= link_to 'Back', admin_messages_path(:id => @cat_id) %>
+  </p>
+
+  
+  <% end %>
+

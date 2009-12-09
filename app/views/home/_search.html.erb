@@ -1,0 +1,7 @@
+<div id="search">
+    <% form_for :video_search,  :url => {:controller => "videos", :action => "search"}  do |s| %>
+    	<%= s.text_field :item, :class => "search_field", :value =>( @search_item || '') %> 
+    	<%= submit_tag("SEARCH", :class=>'gray_submit search_submit') %>
+	<% end %>
+</div>
+<div class="clear"></div>

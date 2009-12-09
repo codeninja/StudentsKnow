@@ -1,0 +1,7 @@
+<%= error_messages_for :comment %>
+<% remote_form_for :comment, :url => remote_save_video_comment_path(:id => @video.id)  do |f| -%>
+	<p>
+		<%= f.text_area :comment, :rows => 2 %>
+	</p>
+    <%= submit_tag 'Post Comment' %>
+<% end %>

@@ -1,0 +1,20 @@
+<div class="message_board_entry">
+    <div class="entry_main">
+      <p class="entry_topic"><%= white_list message.topic%></p>
+      <p class="entry_data"><%= white_list message.data%></p>
+      <% if message.user.id == self.current_user.id %>
+          <p class="entry_user_actions">
+            <%= link_to("Edit", edit_message_path(message))%>
+            <%= link_to("Delete", message_path(@message), :method => "DELETE", :confirm => "Are you sure you want to delete this post?") if message.comments.empty? %>
+          </p>
+      <% end if logged_in? %>
+    </div>
+    <div class="entry_user_info">
+       <%= message.created_at.to_s(:short)%>
+      <div class="element_author_pic">
+              <%= link_to(message.user.login, user_path(message.user)) %><br/>
+              <%= user_profile_pic_link(message.user) %>
+      </div>
+    </div>
+    <div class="clear"><!-- --></div>
+</div>

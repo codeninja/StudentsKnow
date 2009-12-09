@@ -1,0 +1,26 @@
+<div class="player_video_info">
+    <%= render :partial => "videos/player" %>
+
+    <div class="clear"></div>
+
+	<div class="element_info">
+		<div class="element_title">
+			TITLE: <%= white_list @video.name %>
+		</div>
+		<div class="element_desc">
+			<%= white_list @video.description %>
+		</div>
+		<div class="element_tags">
+                        CATEGORY: <%= link_to(@video.category,'#') %><br/>
+			TAGS: <%= @video.regular_tags.collect{|t| "#{link_to(t,'#')}"}.join(', ')%>
+		</div>
+	</div>
+	<div class="element_author_pic">
+		<%= user_profile_pic_link(@video.user) %><br/>
+		<%= link_to(@video.user.login, user_path(@video.user)) %>
+	</div>
+	<div class='clear'></div>
+</div>
+	
+
+

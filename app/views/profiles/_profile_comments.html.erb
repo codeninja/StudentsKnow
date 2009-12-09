@@ -1,0 +1,14 @@
+
+<div id="profile_comments" class='padded_content'>
+<h1>Comments for the profile of <%= @user.login %> </h1>
+	<div id="error_area"></div>
+       <% remote_form_for @comment, :url => save_comment_path(@user.profile.id)  do |f| -%>
+           <%= render :partial => "profiles/comment_form", :locals=>{:f => f} %>
+           <div style="clear:both"><!-- --></div>
+           <%= submit_tag 'Save Comment' %> 
+      <% end %>
+
+		<div id="replaceable_comments" class="padded_content">
+				<%= render :partial => "profiles/replaceable_comments", :locals => {:comments => @comments, :user => @user, :logged_in_user => self.current_user} %>
+		</div>
+</div>

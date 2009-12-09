@@ -1,0 +1,73 @@
+<%
+	max_page_links = 4
+	
+	if page[:page_number] < max_page_links 
+		in_first_block = true
+		in_last_block = false
+	else
+		in_first_block = false
+		in_last_block = ( ((page[:page_number] > (page[:pages] - max_page_links)) and !(in_first_block)) ? true : false )
+	end
+
+	if in_first_block
+		first_page_link_number = 1
+		last_page_link_number = [max_page_links,page[:pages]].min
+	elsif in_last_block
+		first_page_link_number = page[:pages] - max_page_links + 1
+		last_page_link_number = page[:pages]
+	else
+		first_page_link_number = page[:page_number].divmod(max_page_links).first * max_page_links
+		last_page_link_number = first_page_link_number + max_page_links - 1
+	end
+	
+	short_list = page[:pages] < (first_page_link_number + max_page_links)
+		
+	page_link_numbers = (first_page_link_number..last_page_link_number).to_a
+%>
+
+
+<ul class="nav pagination_links" style="position: absolute; bottom: 0px; right: 0;">	
+	<% unless in_first_block %>
+		<% unless page[:pages] == max_page_links%>
+			<li><%= link_to_remote(1, :url =>  options_for_pagination(page, section_id, {:page => 1}).merge(:action => :paginate_section, :controller => :facebook)) %></li>
+			<li class="bullet">&#8230;</li>
+		<% end %>
+	<% end %>
+
+	<% page_link_numbers.each_with_index do |page_num, index| %>
+		<li>
+			<%= link_to_remote(page_num, :url => options_for_pagination(page, section_id, {:page => page_num}).merge(:action => :paginate_section, :controller => :facebook), 			
+									     :html => {:class => "#{page_num == page[:page_number] ? "active" : "inactive"}_link"} ) %>
+		</li>
+		<% unless (index == (max_page_links - 1) || (page[:pages] < 2)) %><li  class="bullet">&#8226;</li> <% end %>
+	<% end %>
+	
+	<% unless short_list%>
+		<% unless in_last_block %>
+			<li class="bullet">&#8230;</li>
+			<li>
+				<%= link_to_remote(page[:pages], :url => options_for_pagination(page, section_id, {:page => page[:pages]}).merge(:action => :paginate_section, :controller => :facebook) ) %>				
+			</li>
+		<% end  %>
+	
+		<li class="bullet">&#8226;</li>
+	<% end %>
+	
+	<% unless page[:pages] < 2  %>
+		<% unless page[:page_number] == 1%>
+			<li>
+				<%= link_to_remote("<< PREVIOUS", :url => options_for_pagination(page, section_id, {:page => (page[:page_number] - 1) }).merge(:action => :paginate_section, :controller => :facebook))  %>				
+			</li>
+		<% end %>
+	
+		<%= "<li>|</li>" if (page[:page_number] != 1) && (page[:page_number] != page[:pages])%>
+	
+		<% unless page[:page_number] == page[:pages] %>
+			<li>
+				<%= link_to_remote("NEXT >>", :url => options_for_pagination(page, section_id, {:page => (page[:page_number] + 1) }).merge(:action => :paginate_section, :controller => :facebook)) %>				
+			</li>
+		<% end %>
+	<% end%>
+</ul>
+
+

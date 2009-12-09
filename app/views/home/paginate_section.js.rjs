@@ -1,0 +1,3 @@
+page.replace_html((@section_id + "_list"), :partial => "layouts/object", :collection => @knows[:page])
+page.replace_html((@section_id + '_page_links'), :partial => "layouts/pagination_links", :locals => {:section_id => @section_id, :page => @knows})
+page.replace_html((@section_id + "_heading"), :partial => "layouts/list_heading", :locals => {:section_id => @section_id, :page => @knows, :default_order => @default_order})

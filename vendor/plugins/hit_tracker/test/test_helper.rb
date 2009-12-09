@@ -1,0 +1,6 @@
+require 'test/unit'
+require 'rubygems'
+require 'active_support'
+require File.dirname(__FILE__) + '/../lib/hit_tracker'
+require File.dirname(__FILE__) + '/../../../../config/environment'
+require 'test_help'

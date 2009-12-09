@@ -1,0 +1,7 @@
+<% content_for("invite_user") do %>
+        Check out the Share Studentsknow FaceBook application <%= fb_req_choice("Check it out!", "http://apps.facebook.com/studentsknow/") %>
+<% end %>
+
+<% fb_request_form("Share Studentsknow","invite_user", "http://apps.facebook.com/studentsknow/") do %>
+        <%= fb_multi_friend_selector("Invite your friends to check out StudentsKnow.", :showborder => true)   %>
+<% end %>

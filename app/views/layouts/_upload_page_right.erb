@@ -1,0 +1,56 @@
+<% filetype ||= nil; filetype = filetype.upcase if filetype.is_a?(String) %>
+
+<h1>ABOUT UPLOADING</h1>
+<div class="upload_disclaimer">
+	<b>Please upload a video or podcast only if:</b>
+	<ol>
+		<li>You created it, or participated closely in it's creation.  No TV shows or footage found on the web.</li>
+		<li>It doesn't contain pornography.</li>
+		<li>It's not a commercial, informercial, or other type of advertisement.</li>
+	</ol> 
+</div>
+
+<br/>
+
+
+<br>
+
+<p >
+	We accept most file formats.
+	<ul class="upload_popup_links">
+		<li><%= link_to_function("File restrictions", "open_popup('#{help_url + "#video_restrictions"}')" ) %></li>
+		<li><%= link_to_function("Why should I tag my videos/podcasts?", "open_popup('#{help_url + "#why_tag"}')")%></li>
+		<li><%= link_to_function("Tagging best practices and FAQ", "open_popup('#{help_url + "#tagging_best_practices"}')")%></li>
+	</ul>
+</p>
+
+
+
+<h1>HOW DO I GET PAID?</h1>
+<p class="copy">
+    <center>
+      <img alt="Revenue_graph" src=
+      "/images/revenue_graph.png" />
+    </center>
+
+    <ul  class="upload_popup_links">
+      <li>Publish a video or podcast and we'll pay you 50% of
+      the ad revenue generated per view of that
+      video/podcast!</li>
+
+      <li>If a student shares content on their favorite
+      websites, blogs, or social networks, the original
+      publisher gets 40%, and the sharer gets 20% of ad revenue
+      generated per view of the video/podcast!</li>
+
+      <li>Also, we'll donate 5% of all revenue to educational
+      charities.</li>
+    </ul>
+</p>
+
+<% unless filetype %>
+	<div id="upload_choice_buttons">
+		<h1><%= link_to("UPLOAD VIDEO",new_video_path)%></h1>
+		<h1><%= link_to("UPLOAD PODCAST","")%></h1>
+	</div>	
+<% end %>

@@ -1,0 +1,7 @@
+if @saved
+  page.replace_html "error_area", ""
+  page.replace_html "profile_comments", :partial => "profiles/profile_comments", :locals => {:user => @user, :comments => @comments}
+  page.visual_effect :highlight, "profile_comments",  :duration => 0.25
+else
+   page.replace_html "error_area", :partial => "profiles/comment_error_messages", :locals => {:comment => @comment}
+end

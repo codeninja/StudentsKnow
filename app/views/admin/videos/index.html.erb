@@ -1,0 +1,24 @@
+<h1>Manage Videos</h1>
+<div id="table">
+		<table >
+		<thead>
+		  <tr>
+		    <th>Name</th>
+		    <th>Description</th>
+                    <th>User</th>
+                    <th>University</th>
+                    <th>Class</th>
+                    <th>Professor</th>
+                    <th>Subject</th>
+                    <th>Book Title</th>
+                    <th>Book Author</th>
+		    <th colspan=2> Actions</th>
+		  </tr>
+		 </thead>
+		
+		  
+		 <%= render_collection_of_partials "row", @videos %>
+		</table>
+</div>
+
+ <%= will_paginate(@videos) %>

@@ -1,0 +1,1 @@
+page.replace_html "cat_table_rows_data_#{@cat.id}", :partial => "messages/cat_table_rows_data", :locals => {:messages => @mesages, :cat => @cat}

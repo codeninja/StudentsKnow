@@ -1,0 +1,26 @@
+<div id="message_center">
+   
+
+    <div id="message_board">
+ 
+   
+
+     <%= render :partial => "messages/message_search" %>
+      <h1>Search Results in Messages:</h1>
+        <table >
+            <tr class="section_heading">
+                       <td class="cat_heading_name">Topic</td><td class="posted_heading_by" >POSTED BY</td><td class="cat_heading_replies">REPLIES</td><td class="cat_heading_date">DATE POSTED</td>
+            </tr>
+            <% for message in @messages %>
+                <tr>
+                    <td class="cat_name"><%= link_to message.topic[0..50] , replies_list_path(message.id) %></td><td class="posted_by"><%=message.user.login.capitalize %></td><td class="cat_replies"><%= link_to(message.comments.size.to_s, replies_list_path(message.id))%></td><td class="cat_date"> <%= show_time(message.created_at) %></td>
+                </tr>
+            <% end %>
+        </table>
+   </div>
+
+   <div id="message_board_ads">
+            <br/>
+            <center><h2> Right Column Ads</h2></center>
+   </div>
+</div>

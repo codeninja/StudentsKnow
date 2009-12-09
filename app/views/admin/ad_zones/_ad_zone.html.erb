@@ -1,0 +1,7 @@
+  <tr>
+    <td><%= h ad_zone.name %></td>
+    <td><%= ad_zone.size %></td>
+    <td><%= link_to 'Show', admin_ad_page_ad_zone_path(:ad_page_id => @adpage.id, :id => ad_zone.id) %></td>
+    <td><%= link_to 'Edit', edit_admin_ad_page_ad_zone_path(:ad_page_id => @adpage.id, :id => ad_zone.id) %></td>
+    <td><%= link_to 'Destroy', admin_ad_page_ad_zone_path(:ad_page_id => @adpage.id, :id => ad_zone.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>

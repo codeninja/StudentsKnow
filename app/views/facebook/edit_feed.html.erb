@@ -1,0 +1,11 @@
+<ul class='nav section_heading'>
+	<li class="nav section_heading">EDIT FEED</li>
+</ul>
+
+
+<div id="edit_feed">
+	<% form_for :know_feed, @know_feed, :url => {:controller => :facebook, :action => :edit_feed}  do |@f| %>
+		<%= render :partial => "facebook/feed_form"%>
+		<%= @f.submit "Save"%> <%= link_to("CANCEL", {:controller => :facebook, :action => :feeds})%>
+	<% end %>
+</div>

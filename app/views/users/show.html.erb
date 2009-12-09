@@ -1,0 +1,104 @@
+<div id="profile">
+  <div id="profile_image">
+       <% if @user.profile_pic %>
+			<%= image_tag(@user.profile_pic.public_filename(:medium)) %>
+	   <% else %>
+			<%= image_tag("default_avatar_400x300.png")%>
+		<% end%>
+  </div>
+
+	<div id="profile_text">
+    	<h1><%= @user.login %></h1>
+    	<p class="user_bio"><%= @user.profile.bio %></p>
+	</div>
+
+   <div id="profile_table">
+       <table>
+		<% if @user == self.current_user %>
+         <tr>
+			<td class="field_name">Age:</td>
+			<td class="field_value"><%= @user.profile.age %> <%= " - <b>HAPPY BIRTHDAY!!!</b>" if @user.profile.is_birthday? %></td>
+	    </tr>
+		<% end %>
+         <tr>
+			<td class="field_name">From:</td>
+			<td class="field_value">
+				<%= [@user.profile.city, @user.profile.state, @user.profile.country].compact.reject{|x| x.empty?}.collect{|x| white_list(x.upcase) }.join(', ') %>
+			</td>
+	  </tr>
+         <tr><td class="field_name">School:</td><td class="field_value"><%= h(@user.profile.university)%></td></tr> 
+		 <tr><td class="field_name">Graduate School:</td><td class="field_value"><%= h(@user.profile.grad_university)%></td></tr>
+         <tr><td class="field_name">Classes:</td><td class="field_value"><%= h @user.profile.classes%></td></tr> 
+         <tr><td class="field_name">Website:</td><td class="field_value"><%= h @user.profile.website%></td></tr> 
+         <tr><td class="field_name">Videos Viewed:</td><td class="field_value"></td></tr> 
+         <tr><td class="field_name">Videos Rated:</td><td class="field_value"></td></tr>     
+       </table>
+   </div>
+  
+  </div>
+
+  <!-- <div id="school_logo">
+    <%#= image_tag("sample_school_logo.png")%>
+  </div> -->
+  <div class="clear"></div>
+  <% if @is_my_profile %>
+    <div class='padded_content'>
+	    <div id="user_rating">
+	      AVERAGE RATING: <%= @user.avg_rating%>
+	    </div>
+	    <div id="profile_controls">
+			<%= link_to "EDIT PROFILE", edit_user_profile_path(@user), :class=>"first" %>
+			<%= link_to "UPLOAD", new_user_video_path(@user) %>
+			<%= link_to "DASHBOARD", dashboard_path %>
+	    </div>
+		<div class='clear'></div>
+	</div>
+  <% end %>
+<div id="profile_comments_div">
+ 		<ul class="nav section_heading">
+       <li class="heading">User Comments <%= expand_widget('profile_comments') %></li>
+    </ul>
+
+	<div id="profile_comments" style="display:none">
+	    <%= render :partial => "profiles/profile_comments", :locals => {:profile => @user.profile} %>
+	</div>
+</div>
+
+
+   <div class="clear"></div>
+
+  <div id="videos_left">
+  
+    <div id= "my_videos">
+      <%= render :partial => 'layouts/thumb_list', :locals => {:objects => @user.videos, :asset_class => "video", :show_filters => 0 }%>
+         <!-- <div class="video_pagination">
+            <span class = "video_link_all"><%#= link_to("ALL VIDEOS", user_videos_path(@user)) if @user.videos.count > 6 %></span>
+        </div> -->
+    </div>
+	<% if (@is_my_profile && @viewed.size > 0)%>
+		<div class="clear" style="height: 20px;"></div>
+		<div id="viewed_videos">
+			<%= render :partial => 'layouts/thumb_list', :locals => {:objects => @viewed, :asset_class => "viewed_video", :show_filters => 0, :no_overs => true }%>
+		</div>
+	<% end%>
+  
+  </div>
+
+  <div id="videos_right">
+    <div id="my_favorites">
+        <%= render :partial => 'layouts/thumb_list', :locals => {:objects => @user.favorite_knows, :asset_class => "favorite"}%>
+             <div class="video_pagination"><!-- --></div>
+    </div>
+	<% if (@is_my_profile && @rated.size > 0)%>
+		<div class="clear" style="height: 20px;"></div>
+		<div id="rated_videos">
+			<%= render :partial => 'layouts/thumb_list', :locals => {:objects => @rated, :asset_class => "rated_video", :show_filters => 0, :no_overs => true }%>
+		</div>
+	<% end %>
+  </div>
+
+<script type="text/javascript" charset="utf-8">
+	var asset_menus = { };
+	<%= asset_menus_json(@is_my_profile,@user.videos) %>
+	<%= favorite_menus_json(@is_my_profile,@user.favorite_knows) %>
+</script>

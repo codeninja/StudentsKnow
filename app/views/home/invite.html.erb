@@ -1,0 +1,116 @@
+<div class="invite_right">
+	<p class="invite_right_header">
+		<span class="white">EARNING IS EASY!!!</span><br/>
+		Share your knowledge,<br/>
+		we'll share the wealth.
+	</p>
+	
+	<p class="copy">
+		<center><%= image_tag("revenue_graph.png")%></center>
+		
+		<ul>
+			<li>Publish a video or podcast and we'll pay you 50% of the ad revenue generated per view of that video/podcast.</li>
+			<li>If a student shares content on their favorite website, blogs, or social networks, the original publisher gets 40%, and the sharer gets 20% of ad revenue generated per view of the video/podcast.</li>
+			<li>Also, well donate 5% of all revenue to educational charities.</li>
+		</ul>
+	</p>
+	
+	<div class="invite_promo">
+		<span class="white_underline">IF THAT IS NOT ENOUGH:</span>
+		
+		<ul  class="orange">
+			<li>$50 in free iTunes credit</li>
+		</ul>
+		<span class="white_small">for the first 200 videos/podcasts uploaded to the site<br/>
+		($10 in iTunes per submission, limit 5 per person)</span>
+
+		
+	</div>
+	
+</div>
+
+<div class="invite_left">
+	<p class="invite_left_header">
+		START GETTING SMARTER, QUICKER.<br/>
+		Be the first at StudentsKnow.com.
+	</p>	
+	
+	<p class="intro">
+		StudentsKnow.com is a unique knowledge sharing site that may be helpful;
+		dare we say, revolutionary. Here, students help other students get smarter,
+		quicker, all while making a little extra cash!  Come help us build the world's
+		largest interactive study group now.
+	</p>
+	
+	<p class="copy">
+		<span class="firstword">Welcome.</span> StudentsKnow.com is an online social network,
+		knowledge base and interactive study group all in one. On StudentsKnow.com you will 
+		find first-person accounts of college lessons, concepts, and book synopses, all 
+		communicated through videos and podcasts created by students to help students in their
+		studies. This revolutionary site will allow students to share knowledge on school subjects
+		within a class, across a class, or around the world.
+	</p>
+	
+	<p class="copy">
+		<span class="firstword">Create.</span> For example, a student can create a brief video or podcast
+		to discuss key points from <u>Of Mice and Men</u> and post it to StudentsKnow.com for
+		other students to view, learn from and rate based upon how much it helped them in
+		their studies. Students who create content are strengthening their own knowledge through the
+		act of teaching, while those browsing will have access to the largest (hopefully soon) online
+		source of student-2-student tutoring.
+	</p>
+	
+	<p class="copy">
+		<span class="firstword">Launch.</span> Our beta launch is on March 18, 2008 and we are in
+		need of as many videos as we can muster by then.  There is no signup fee, membership cost
+		or anything like that. Just start making your videos now and on March 18th you can being
+		posting, earning money and learning!
+	</p>
+	
+	<p class="copy">
+		<b>Contact <a href="mailto:info@studentsknow.com">info@studentsknow.com</a> with any questions.</b>
+	</p>
+</div>
+
+
+
+<div class="invite_form">
+	<p class="invite_form_header">
+		EMAIL YOUR FRIENDS AND CREATE, LEARN, AND EARN!
+	</p>
+	<%= error_messages_for :invite %>
+	<% form_for :invite, @invite, :url => process_invite_url() do |f| %>
+		<table>
+			<tr>
+				<td>
+					<label for="first_name">YOUR FIRST NAME*</label><br>
+					<%= f.text_field :first_name %>
+				</td>
+				<td>
+					<label for="first_name">YOUR LAST NAME</label><br>
+					<%= f.text_field :last_name %>
+				</td>
+				<td rowspan=3 class="msg">
+					<label for="friends">ENTER A PERSONAL MESSAGE</label><br>
+					<%= f.text_area :message, :value => 'I just found this site...check it out!', :style => 'height: 150px; width: 350px' %>
+				</td>	
+			</tr>
+			<tr>
+				<td colspan=2>
+					<label for="email">YOUR EMAIL ADDRESS*</label><br>
+					<%= f.text_field :email, :style => 'width: 500px;' %>
+				</td>
+			</tr>
+			<tr>	
+				<td  colspan=2>
+					<label for="friends_emails">YOUR FRIENDS EMAIL ADDRESSES*</label><br>
+					<%= f.text_field :friends, :style => 'width: 500px;' %>
+				</td>
+			</tr>
+			
+		</table>
+		<div class="clear"><!-- --></div>
+		<%= submit_tag("Submit", :class => 'invite_submit')%>
+		<div class="clear"><!-- --></div>
+	<% end %>
+</div>

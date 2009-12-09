@@ -1,0 +1,6 @@
+if @result
+  page.replace_html 'rating_block', :partial => 'videos/rating_block', :locals => {:video => @video, :user => @user, :voted => true}
+  page.replace_html 'ratings_value',  @video.rating_letter
+else
+  page << 'alert("You have already rated this Know.")'
+end

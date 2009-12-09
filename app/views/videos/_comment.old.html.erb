@@ -1,0 +1,26 @@
+<%= "Be the first to comment on this video" if @comments.empty?  %>
+
+
+<div class="padded_content">
+	<% for comment in @comments %>
+		<div style="margin: 5px; margin-bottom: 10px;">
+		<p>
+			<%= comment.comment %>
+		</p>
+		<p>
+		--- <%= comment.user.login.capitalize %>
+		</p>
+		</div>
+	<% end %>
+</div>
+
+<%= will_paginate @comments, :remote_options=> {:url => {:action=>'remote_paginate', :vid_id=>@video.id }}%>
+
+<%# @lcl_user = User.find(comment.user[:id]) %>
+  <%# if @lcl_user.profile_pic %>
+	<%#= user_profile_pic_link(@lcl_user) %>
+  <%# else %>
+	<!-- No Photo for This User -->
+<%# end %>
+
+

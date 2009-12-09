@@ -1,0 +1,7 @@
+<div id="my_videos">
+	<ul class="nav section_heading">
+		<li class="heading">MY VIDEOS</li>
+		<li><%= link_to("MY FAVORITES", {:controller => :facebook, :action => :favorites})%></li>
+	</ul>
+	<%= render :partial => "facebook/object", :collection => @user.videos%>
+</div>

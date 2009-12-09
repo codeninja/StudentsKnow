@@ -1,0 +1,21 @@
+<div id="responses">
+
+<h3>Message: <%= @message.topic %></h3>
+<p><%= @message.data%></p>
+<br/>
+<p><b>Responses: </b></p>
+<ul class="nav">
+    <% for reply in @replies %>
+      <li >
+        
+        <p >Title: <%= reply.title%></p>
+        <p >From: <%= reply.user.login%></p>
+        <p  >Reply: <br/><%= reply.comment %></p>
+        <p ><%= link_to("edit", admin_edit_reply_path(:id => reply.id))%> | <%= link_to("delete", admin_delete_reply_path(:id => reply.id), :confirm => "Deleting '#{reply.title}'. This cannot be undone. Are you sure?") %></p>
+            </li>
+  
+    <%end %>
+  
+</ul>
+
+</div>

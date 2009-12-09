@@ -1,0 +1,6 @@
+<p><label for="topic" class="required">Topic:</label>
+<%= @f.hidden_field :category, :value => @category.name%>
+<%= @f.text_field :topic, :style => "width: 400px;" %></p>
+
+<p><label for="data" class='required'>Message:</label>
+<%= @f.text_area :data, :rows => 5, :style => "width: 350px;"  %></p>

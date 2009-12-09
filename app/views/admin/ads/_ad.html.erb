@@ -1,0 +1,14 @@
+    <tr>
+      <td><%= h ad.name %></td>
+      <td><%= h ad.size %></td>
+      <td><%= h ad.width %> </td>
+      <td><%= h ad.height %> </td>
+	  <td><%= h ad.weight %> </td>
+      <td><%= (ad.text_only ? "Yes" : "No") %></td>
+      <td><%= h ad.code %> </td>
+      <td><%= link_to("Show", admin_adbackend_ad_path(:adbackend_id => @adbackend.id, :id => ad.id)) %></td>
+      <td><%= link_to("Edit", edit_admin_adbackend_ad_path(:adbackend_id => @adbackend.id, :id => ad.id)) %></td>
+      <td><%= link_to("Destroy", admin_adbackend_ad_path(:adbackend_id => @adbackend.id, :id => ad.id), 
+                                :method => :delete, 
+                                :confirm => "Are you sure you want to destroy this ad?") %></td>
+    </tr>

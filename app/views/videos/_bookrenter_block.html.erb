@@ -1,0 +1,24 @@
+<div id="bookrenter">
+	<ul class="nav section_heading">
+		<li class="heading">BOOKRENTER.COM</li>
+	</ul>
+	<center><h2>Rent Textbooks and Save Up To 75%</h2></center>
+	<% if data = get_br_books(isbn)%>
+		<%= link_to(image_tag(data.image_url, :style => "float: left; padding: 10px; height: 100px;"), data.url, :target => "_blank") if data.image_url%>
+		<h3><%= link_to(data.title, data.url, :target => "_blank")%>
+			<span class="br_author">(<%= data.authors.join(', ') if data.authors%>)</span></h3>
+		<ul id="bookrenter_data">
+			<li class="br_availability"><%= data.availability%></li>
+			<% unless data.rental_prices.nil? %>
+				<li><b>Rent:</b> <%= (data.rental_prices || []).collect{|p| "#{p.last}&nbsp;(#{p.first}d)"}.join(', ')%></li>
+			<% end %>
+			<li><b>Buy:</b> <%= data.purchase_price%></li>
+			<li class="br_shipping">(Shipping as low as: <%= data.lowest_shipping_price %>)</li>
+		</ul>
+	
+	<% else%>
+		<center><%= link_to(image_tag("bookrenter_logo.gif"), "http://www.bookrenter.com", :target => "_blank")%></center>
+	<% end %>
+
+	<div class="clear"></div>
+</div>

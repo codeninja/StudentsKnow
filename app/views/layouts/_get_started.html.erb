@@ -1,0 +1,27 @@
+<% @categories ||= know_categories%>
+<% on_top = true if on_top.nil? %>
+<ul class="nav section_heading <%= "top_heading" if on_top %>">
+  <li class="heading">GET STARTED</li>
+</ul>
+<p class="start_instructions" id="start_instructions">
+	Click a category name to browse OR enter keywords to search.<br/>
+	<i><%= link_to("About Categories", help_url + '#category_descriptions')%></i>
+</p>
+
+<div id="get_started" class='padded_content' >
+  <ul class="nav cat_links_list">
+    <% know_categories.each_with_index do |cat, index| %>
+      <li>
+		<%#= link_to( cat.name.gsub(/-/,'&nbsp;').gsub('and','&'), 
+					 videos_cat_url(:category=> cat.name), 
+					{ :onmouseover => "start_category_rollover('#{cat.description}')",
+					  :onmouseout => "start_category_rolloff()"}) %>
+		<%= link_to( cat.name.gsub(/-/,'&nbsp;').gsub('and','&'), 
+								 videos_cat_url(:category=> cat.name)) %>
+			<%= " - " unless index == (@categories.size - 1)%>
+	  </li>
+    <% end %>
+  </ul>
+	<!-- <p id="get_started_description">&nbsp;</p> -->
+	 <%= render :partial => 'home/search'%>
+</div>

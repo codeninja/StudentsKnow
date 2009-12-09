@@ -1,0 +1,109 @@
+
+<div id="left_side">
+	<%= render :partial => "videos/player_container" %>
+	<div class="clear"></div>
+
+	<ul class="nav section_heading">
+		<li class="heading">RATE THIS VIDEO <%= "You must #{link_to("login", login_path)} or #{link_to("sign up", login_path)} to rate videos." unless logged_in? %></li>
+	</ul>
+	<div id="rate" class='padded_content'>
+		<div id="rating_block">
+			<%= render :partial => 'videos/rating_block', :locals => {:video => @video}%>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div id="refer" class='padded_content'>
+		<ul class="nav section_heading">
+			<li class="heading">SPREAD THE WORD</li>
+		</ul>
+		<div class="widgets">
+			<ul class="nav">
+				<% [:digg, :delicious, :reddit, :yahoo, :google, :stumbleupon].each do |site| %>
+				<li>
+					<%= bookmark_link({ :site => site, 
+						:page_url => request.env["HTTP_HOST"] + video_path(@video), 
+						:page_title => "Students Know - #{@video.name}", 
+						:link_title => "Post this to #{site.to_s.capitalize}"},true) %>
+				</li>
+
+				<% end%>
+								<li><%= link_to(image_tag("facebook.gif"), "http://www.facebook.com/apps/application.php?id=16264296812", :target => "_blank")%></li>
+			</ul>
+		</div>
+
+		<div style="float: left; width:140px; margin-top: 15px;">
+			<h3 class="refer"><%= link_to_function("EMAIL TO A FRIEND", "$('email_form').show()") if logged_in? %></h3>
+			<h3 class="refer">
+				<% if logged_in? %>
+					<% if @video.is_liked_by?(self.current_user) %>
+						<%= link_to_remote("FAVORITE (REMOVE)", :url => favorite_video_url(:id => @video.id, :favorite => "false"), :html => {:id => 'favorite_link'}) %>
+					<% else  %>
+						<%= link_to_remote("SAVE TO FAVORITES", :url => favorite_video_url(:id => @video.id) , :html => {:id => 'favorite_link'}) %> 
+					<% end %>							
+				<% end %>
+			</h3>
+			<h3 class="refer">
+			    <div id='make_dirty_link'>
+				<% if not logged_in?%>
+				<%= link_to("DIRTY KNOWS (flag)", login_url ) %>
+				<% elsif @video.can_be_dirtied_by?(self.current_user ) %>
+					<%= link_to_remote("DIRTY KNOWS (flag)", :url => make_dirty_url(:id => @video.id, :user_id => self.current_user.id) ) %>
+				<% else %>
+					FLAGGED DIRTY
+				<% end %>
+				</div>
+			</h3>
+		
+		</div>
+
+		<div class="embed_urls">
+			<h3 class="refer">URL</h3>
+			<input type='text' value="<%= "http://" + HOSTNAME + @share_url %>" onclick="select_all(this)"/>
+			<h3 class="refer">EMBED</h3>
+			<input type='text' value="<%= encode_entities(render(:partial => "videos/player_noscript", :locals => {:embedded => true})).gsub(/[\n\r\t]/,' ').gsub(/  +/,' ')%>"  onclick="select_all(this)"/>
+		</div>		
+		
+		<div class="clear"><!-- --></div>
+		
+		<div id="email_form_error"><!-- --></div>
+		<div id="email_form" style="display: none;">
+			<% form_remote_tag( :url => send_to_friend_url(:id => @video.id) ) do -%>
+				<p>
+					<label for="email" class='required'>Email:</label>
+					<%= text_field("email", "email", :style => "width: 250px;")%>
+				</p>
+				<p>
+					<label for="message" class="required">Message:</label>
+					<%= text_area("email", "message", :style => "width: 250px; height: 50px;")%>
+				</p>
+				<%= submit_tag("Submit", :style => "float: right;") %>
+			<% end -%>
+		</div>
+	</div>
+
+	<div class="clear"><!-- --></div>
+	
+	<div id="comment_section">
+		<ul class="nav section_heading">
+			<li class="heading">COMMENT <%= "You must #{link_to("login", login_path)} or #{link_to("sign up", login_path)} to post comments." unless logged_in? %></li>
+		</ul>
+		<div id="comments" class='padded_content'>
+			<%= render :partial => "videos/comments" %>
+		</div>
+	</div>
+
+	<%= (render :partial => "videos/bookrenter_block", :locals => {:isbn => @video.isbn})%>
+	<%= render :partial => "videos/barnes_noble_block" %>
+
+
+
+	<%= render :partial => "home/left_ads"%>
+</div>
+
+<div id="right_side">
+	<%= render :partial => "home/right_ads"%>	
+	<%= render :partial => 'layouts/get_started', :locals => {:on_top => false}%>
+	<%= render :partial => "layouts/list", :locals => {:section_id => "related_list", :page => @related_videos, :hide_sort_links => true, :default_order => 'rating'}%>
+	<%#= render :partial => "layouts/special_ad1" %>
+</div>

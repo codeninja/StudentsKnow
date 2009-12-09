@@ -1,0 +1,64 @@
+# == Schema Information
+# Schema version: 57
+#
+# Table name: profiles
+#
+#  id              :integer(11)     not null, primary key
+#  country         :string(255)     
+#  state           :string(255)     
+#  zip             :string(255)     
+#  gender          :string(255)     
+#  university      :string(255)     
+#  dob             :datetime        
+#  start           :datetime        
+#  graduation      :datetime        
+#  receive_emails  :boolean(1)      
+#  email_sent      :boolean(1)      
+#  over_13         :boolean(1)      
+#  terms           :boolean(1)      
+#  user_id         :integer(11)     
+#  created_at      :datetime        
+#  updated_at      :datetime        
+#  classes         :text            
+#  website         :string(255)     
+#  city            :string(255)     
+#  bio             :text            
+#  paypal_email    :string(255)     
+#  optin           :boolean(1)      default(TRUE)
+#  grad_start      :date            
+#  grad_grad       :date            
+#  grad_university :string(255)     
+#  fb_options      :text            
+#
+
+quentin:
+  id: 1
+  country: USA
+  state: Texas
+  zip: 12345
+  gender: m
+  university: University of Texas
+  dob: <% 25.years.ago.to_s :db %>
+  start: <% 1.years.ago.to_s :db %>
+  graduation: <% 2.years.from_now.to_s :db %>
+  receive_emails: 1
+  email_sent: 1
+  user_id: 1
+  created_at: <%= 5.days.ago.to_s :db %>
+  updated_at: <%= 5.days.ago.to_s :db %>
+
+aaron:
+  id: 2
+  country: USA
+  state: Texas
+  zip: 12345
+  gender: m
+  university: University of Texas
+  dob: <% 25.years.ago.to_s :db %>
+  start: <% 1.years.ago.to_s :db %>
+  graduation: <% 2.years.from_now.to_s :db %>
+  receive_emails: 1
+  email_sent: 1
+  user_id: 2
+  created_at: <%= 5.days.ago.to_s :db %>
+  updated_at: <%= 5.days.ago.to_s :db %>

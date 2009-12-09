@@ -1,0 +1,9 @@
+<h1>New Ad Zone for <%= h @adpage.name %> </h1>
+
+<%= error_messages_for :ad_zone %>
+
+<% form_for(@ad_zone, :url => admin_ad_page_ad_zones_path(:ad_page_id => @adpage.id)) do |@f| %>
+    <%= render :partial => "form" %>
+    <%= @f.submit "Create" %>
+    <%= link_to("Cancel", admin_ad_page_path(:id => @adpage.id)) %>
+<% end %>

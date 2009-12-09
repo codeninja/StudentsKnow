@@ -1,0 +1,135 @@
+<%= javascript_include_tag '/flash/swfupload.js' %>
+<%= javascript_include_tag '/flash/swfupload.graceful_degradation.js'%>
+<%= javascript_include_tag '/flash/swfupload_handlers.js' %>
+
+<script type="text/javascript" defer="defer">
+	var swf_upload_control;
+	swf_upload_control = new SWFUpload({		
+		// Backend settings
+		upload_url: "<%= swf_upload_video_asset_path(:upload_ticket => @ticket_id)%>",
+		file_post_name: "videoasset",
+
+		// Flash file settings
+		file_size_limit : "1000000",	// 100 MB
+		file_types : "*.avi; *.mov; *.mp4; *.mpg; *.mpeg; *.flv; *.wmv",
+		// file_types: "*.*",
+		file_types_description : "All Video Files",
+		file_upload_limit : "0", // Even though I only want one file I want the user to be able to try again if an upload fails
+		file_queue_limit : "1", // this isn't needed because the upload_limit will automatically place a queue limit
+
+		// Event handler settings
+		swfupload_loaded_handler : myShowUI,
+		
+		//file_dialog_start_handler : fileDialogStart,		// I don't need to override this handler
+		file_queued_handler : fileQueued,
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		
+		//upload_start_handler : uploadStart,	// I could do some client/JavaScript validation here, but I don't need to.
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadSuccess,
+		upload_complete_handler : uploadComplete,
+
+		// Flash Settings
+		flash_url : "/flash/swfupload_f8.swf",	// Relative to this file
+
+		// UI settings
+		swfupload_element_id : "flashUI",		// setting for the graceful degradation plugin
+		degraded_element_id : "degradedUI",
+
+		custom_settings : {
+			progress_target : "fsUploadProgress",
+			upload_successful : false
+		},
+		
+		// Debug settings
+		debug: false
+	});
+
+	
+	 function uploadComplete() {
+			progress_watch.stop();
+			upload_completed();
+		<%= remote_function(:url => swf_upload_video_complete_path(:upload_ticket => @ticket_id)) %>
+		
+	};
+	
+	function myShowUI() {
+		var btnSubmit = document.getElementById("btnSubmit");
+		btnSubmit.onclick = doSubmit;
+		// btnSubmit.disabled = true;
+		// toggle_upload_buttons();
+		var browse_button = $('btnBrowse');
+		browse_button.disabled = false;
+		browse_button.removeClassName('btnSubmitDisabled');
+		SWFUpload.swfUploadLoaded.apply(this);
+	}
+	
+	function fileBrowse() {
+		var txtFileName = document.getElementById("txtFileName");
+		txtFileName.value = "";
+		this.cancelUpload();
+		this.selectFile();
+	}
+
+	var progress_watch;	
+	
+	function doSubmit(e) {
+		e = e || window.event;
+		if (e.stopPropagation) e.stopPropagation();
+		e.cancelBubble = true;
+		try {
+			swf_upload_control.startUpload();
+			progress_watch = new PeriodicalExecuter(update_upload_continue_button_progress, 0.2);
+			animate_upload_continue_button();
+		} catch (ex) {
+
+        }
+        return false;
+    }
+
+	function validateForm() {
+		document.getElementById("btnSubmit").disabled = false;
+	}
+	
+	
+	function toggle_upload_buttons(){
+		var browse_button = $('btnBrowse');
+		
+		if (browse_button.disabled == false) {
+			browse_button.disabled = true;
+			browse_button.addClassName('btnSubmitDisabled');
+		} else {
+			browse_button.disabled = false;
+			browse_button.removeClassName('btnSubmitDisabled');
+		}
+		
+	}	
+</script>
+
+
+
+<div id="flashUI" style="display: none;">
+	Select a video or podcast to upload*<br>
+	(Podcast uploads will be available soon, sorry for the inconvenience.)
+	<br/><br/>
+	<input id="btnBrowse" type="button" value="BROWSE" onclick="fileBrowse.apply(swf_upload_control)"  />
+	<input type="text" id="txtFileName" disabled="true" style="border: solid 1px; background-color: #FFFFFF; width: 369px;" />
+	
+	<div class="flash" id="fsUploadProgress"><!-- --></div>
+	
+	<p style="margin-top: 10px; font-style: italic;">By posting any content to StudentsKnow.com, I acknowledge that I have read and accept the <%= link_to("Terms & Conditions", "#", :onClick => "open_popup('#{terms_url(:no_layout => 1)}')") %>.</p>
+	
+	<input type="submit" value="UPLOAD" id="btnSubmit" class="submit" disabled />
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	toggle_upload_buttons();
+</script>
+
+
+<div id="degradedUI">
+	<h1>Sorry!</h1>
+	You need to enable javascript and install <%= link_to("Flash Player 9", "http://www.adobe.com/products/flashplayer/") %> for file uploads to work.
+</div>

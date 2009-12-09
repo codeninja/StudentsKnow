@@ -1,0 +1,10 @@
+<%= image_tag(@asset.public_filename(:thumb), :style => "float: left; margin: 10px;") %>
+<h2>Success!</h2>
+
+<% if @video%>
+	<p>Revise your video information if desired, and click the "Continue" button below.</p>
+<% else %>
+	<p>Finish filling out the form below and click the "UPDATE" button to submit.</p>
+<% end%>
+
+<div class="clear"><!-- --></div>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<advertisements>
+	
+	<advertisement>
+		<title>1234567890123456789012345678901234567890</title> <!-- 30 char functional max -->
+		<body1>1234567890123456789012345678901234567890</body1> <!-- 40 char functional max -->
+		<body2>1234567890123456789012345678901234567890</body2> <!-- 40 char functional max -->
+		<url>http://one.myfantasticproduct.com</url> <!-- 40 char functional max -->
+	</advertisement>
+
+	<advertisement>
+		<title>My Ad Title Two</title>
+		<body1>How amazing is our product....</body1>
+		<body2>Best in class guaranteed. </body2>
+		<url>http://two.myfantasticproduct.com</url>
+	</advertisement>
+
+	<advertisement>
+		<title>My Ad Title Three</title>
+		<body1>How amazing is our product....</body1>
+		<body2>Best in class guaranteed. </body2>
+		<url>http://three.myfantasticproduct.com</url>
+	</advertisement>
+
+	<advertisement>
+		<title>My Ad Title Four</title>
+		<body1>How amazing is our product....</body1>
+		<body2>Best in class guaranteed. </body2>
+		<url>http://four.myfantasticproduct.com</url>
+	</advertisement>
+
+	<advertisement>
+		<title>My Ad Title Five</title>
+		<body1>How amazing is our product....</body1>
+		<body2>Best in class guaranteed. </body2>
+		<url>http://five.myfantasticproduct.com</url>
+	</advertisement>
+
+	<advertisement>
+		<title>My Ad Title Six</title>
+		<body1>How amazing is our product....</body1>
+		<body2>Best in class guaranteed. </body2>
+		<url>http://six.myfantasticproduct.com</url>
+	</advertisement>
+	
+</advertisements>

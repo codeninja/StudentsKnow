@@ -1,0 +1,11 @@
+<div id="profile">
+    <h1>Edit My Profile</h1>
+	<%= link_to "CHANGE PASSWORD", edit_password_path(:id => @profile.user.login)%>
+    <%= error_messages_for :profile %>
+        <% form_for(@profile, :html => {:multipart => true }) do |f| -%>
+            <%= render :partial => "profiles/form", :locals=>{:f => f} %>
+            <div style="clear:both"><!-- --></div>
+
+            <%= submit_tag 'Save Profile' %> <%= link_to 'Cancel', user_profile_path(@profile.user)%>
+       <% end %>
+</div>

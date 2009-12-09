@@ -1,0 +1,12 @@
+<% show ||= false %>
+<%= link_to_function("Post a Message", "$('new_message').show(); $('message_topic').focus()", :style => "font-size: 1em; margin-left: 5px;") unless show%>
+<div id="new_message" <%= 'style="display: none;"' unless show%>">
+  <h2>Post A Message</h2>
+  <% form_for :message, @message, :url => create_message_path(@message), :method => "put" do |@f| %>
+    <%= render :partial => "messages/message_form"%>
+    <div class="submit" style="margin-left: 400px;">
+      <%= submit_tag("Submit")%>
+      <%= link_to_function("Cancel", "$('new_message').hide(); $('message_topic').value=''; $('message_data').value=''", :style => 'vertical-align: top; font-size: 1em;')%>
+    </div>
+  <% end%>
+</div>

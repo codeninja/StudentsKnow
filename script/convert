@@ -1,0 +1,6 @@
+#!/bin/bash
+PATH=/usr/local/bin:/usr/bin
+RAILS_ENV=production
+
+cd /home/students/site
+rake assets:videos:convert RAILS_ENV=production

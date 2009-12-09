@@ -1,0 +1,19 @@
+<div class="know_comment" id="comment_<%= comment.id %>">
+	<span class="comment_user"><%= comment.user.login if comment.user%></span>
+	<span class="comment_date">(<%= comment.created_at.to_s(:short)%>)</span><br/>
+	<span class="comment_body"><%= comment.comment%></span>
+	<div id="comment_<%= comment.id %>_reply" style="display: none;">
+		<%= render :partial => "videos/comment_comment_form", :locals => {:comment => comment} if logged_in? %>
+	</div>
+	<% if (self.current_user.id != comment.user_id) %>
+		<p align=right>
+			<%= link_to_function("Reply", "toggle_comment_reply_link(#{comment.id})", 
+									:id => "comment_#{comment.id}_reply_link",
+									:class => "comment_reply_toggle")%>
+		</p>
+	<% end if logged_in? %>
+	<div id="comment_<%= comment.id %>_comments">
+		<%= render :partial => "videos/comment", :collection => comment.comments.sort_by{|c| c.created_at}.reverse %>
+	</div>
+</div>
+<div class="clear"></div>

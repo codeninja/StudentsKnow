@@ -1,0 +1,8 @@
+<h1>New Ad Page</h1>
+
+<%= error_messages_for :adpage %>
+<% form_for @adpage, :url => admin_ad_pages_path do |@f| %>
+    <%= render :partial => "form" %>
+    <%= submit_tag "Create" %>
+    <%= link_to("Cancel", admin_ad_pages_path) %>
+<% end %>

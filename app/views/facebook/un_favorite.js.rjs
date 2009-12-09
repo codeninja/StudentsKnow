@@ -1,0 +1,5 @@
+if @remove
+  page.remove "video_#{@video.id}"
+else
+  page.replace "video_#{@video.id}", :partial => "facebook/object", :locals => {:object => @video}
+end

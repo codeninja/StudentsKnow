@@ -1,0 +1,36 @@
+<fb:subtitle seeallurl="<%= "http://www.studentsknow.com" + url_for({:controller => :facebook, :action => :favorites}) %>"> 
+    <a href="http://apps.facebook.com/studentsknow/">View Application</a>
+</fb:subtitle>
+
+<style>
+h1 span, h1 img{
+        vertical-align:middle;
+}  
+ul {list-style: none;}
+li { padding: 5px; margin: 5px 10px; clear: both; font-size: 1.1em; line-height: 1.1em;}
+li img { padding: 5px; float: left;}
+li p {margin: 0; padding: 5px; font-size: 1.2em; line-height: 1.2em;}
+span.title { font-size: 1.2em;}
+span.date {font-size: 0.8em; font-style: italic;}
+p.timestamp {font-size: 0.9em; font-style: italic; margin: 0 0 10px 10px;}
+</style>
+
+<h1> <%= image_tag("") %> <span><%= feed_description %></span> </h1>  
+<p class="timestamp">Updated: <%= Time.now.to_s(:long)%></p>
+<ul>
+     <% knows.each do |fav| %>
+		<li>
+			<%= image_tag("http://www.studentsknow.com" + fav.asset.public_filename(:thumb), :border => 0 )%>
+			<p>
+				<span class="title"><%= link_to(fav.name, "http://www.studentsknow.com" + url_for(:controller => :videos, :action => :show, :id => fav.id), :target => "_BLANK")%></span><br>
+				posted by <%= link_to(fav.user.login, "http://www.studentsknow.com" + url_for(:controller => :users, :action => :show, :id => fav.user_id), :target => "_BLANK")%><br>
+				<span class="date"><%= fav.created_at.to_s(:long)%></span>
+			</p>
+		</li>
+	<% end %>
+</ul>
+
+<br/>
+<p style="text-align: right; font-weight: bold;">
+	<a href="http://www.facebook.com/apps/application.php?id=16264296812">Install Application</a>
+</p>

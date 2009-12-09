@@ -1,0 +1,8 @@
+
+ <% @messages = Message.find_tagged_with(cat, :order => "created_at DESC").paginate(
+        :per_page => @per_page,
+ 	:page => params["page"] || 1) %>
+              
+
+<%= render :partial => "messages/cat_table_rows_data", :locals => {:messages => @messages, :cat => cat} %>
+

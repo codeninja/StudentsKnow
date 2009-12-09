@@ -1,0 +1,11 @@
+Your account has been created.
+
+  Username: <%= @user.login %>
+
+Visit this url to activate your account:
+
+  <%= @url %>
+
+You may also enter your activation code below at <%= activate_url(:host => HOSTNAME, :activation_code => @code) %>
+
+  Code: <%= @code %>

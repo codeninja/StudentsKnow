@@ -1,0 +1,70 @@
+<%= javascript_include_tag 'cropper/lib/prototype' %>
+<%= javascript_include_tag 'cropper/lib/scriptaculous' %>
+<%= javascript_include_tag 'cropper/cropper' %>
+
+<script type="text/javascript">
+   
+      function onEndCrop( coords, dimensions ) {
+  
+          $( 'x1' ).value = coords.x1;
+          $( 'y1' ).value = coords.y1;
+          $( 'x2' ).value = coords.x2;
+          $( 'y2' ).value = coords.y2;
+          $( 'width' ).value = dimensions.width;
+          $( 'height' ).value = dimensions.height;
+
+      }
+   
+</script>
+
+<h1>Crop Your Profile Image</h1>
+
+<div class="full_preview" style="float: left;">
+	<%=  image_tag(@profile.user.profile_pic.public_filename(:large),:id=>"testImage") %>
+</div>
+
+<div class="cropped_preview" style="float: left;">
+	    <div id="previewWrap"><!-- --></div>
+	
+		<div class="inst">
+		    <p>To the left is a view of your uploaded image with a 400 x 300 box in the center. The highlighted
+		    portion of the image (in the box) is currently selected to be shown after cropping.  Everything grayed
+		    out will be cropped off.</p>
+
+		    <p>You may resize the floating window larger to select more of the image. You may also move the 
+		    box around the image. Above there is a preview pane that shows what the 
+		    cropped image will look like. 
+		    </p>
+
+		    <p>When you are through manipulating the image, press the "Crop Image" button to save your changes or use the 
+		    "Cancel" link to take you back to your profile edit page</p>
+		</div>
+	
+		<div>
+		  <% form_for :crop, :url => save_crop_path do |f| -%>
+		  	<%= f.hidden_field  :x1, :id=>"x1"   %>
+		  	<%= f.hidden_field  :y1, :id=>"y1"  %>
+		  	<%= f.hidden_field  :x2, :id=>"x2"  %>
+			<%= f.hidden_field  :y2, :id=>"y2"  %>
+			<%= f.hidden_field :width, :id=>"width"  %>
+			<%= f.hidden_field :height, :id=>"height"  %>
+			<%= submit_tag 'Crop Image' %><%= link_to "Cancel", edit_user_profile_path(@profile.user) %>
+		  <% end %>
+		</div>
+
+	<script type="text/javascript" language="javascript">
+	    Event.observe( window, 'load', function() {
+	        new Cropper.ImgWithPreview(
+	            'testImage',
+	            {
+	                previewWrap: 'previewWrap',
+	                minWidth: 200,
+	                minHeight: 150,
+	                ratioDim: { x: 400, y: 300 },
+	                onEndCrop: onEndCrop
+	            }
+	        );
+	    } );
+	</script> 
+
+</div>

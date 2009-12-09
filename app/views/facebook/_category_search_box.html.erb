@@ -1,0 +1,6 @@
+<div id="category_add_<%= category_add_id = Time.now.to_i%>">
+	<% form_remote_tag :url => {:controller => :facebook, :action => :category_search, :add_id => category_add_id} do -%>
+		<%= text_field :search_category, :search, :size => 20 %>
+		<%= submit_tag "Add" %>
+	<% end -%>
+</div>

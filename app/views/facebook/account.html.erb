@@ -1,0 +1,38 @@
+<ul class="nav section_heading">
+	<li></li>
+</ul>
+<div id='account_options'>
+	<% if flash[:status]%>
+		<h2 class="status"><%= flash[:status]%></h2>
+	<% end %>
+	
+	
+	<h2>DISPLAY OPTIONS</h2>
+	
+	<%= form_tag url_for({:controller => :facebook, :action => :set_options})%>
+		<div class="feed_options">
+			<h3>DISPLAY FEEDS:</h3>
+			<% @user.know_feeds.each do |feed| %>
+				<% feed_identifier = "feed_" + feed.id.to_s%>
+				<p><%= radio_button_tag('profile_feed', (feed_identifier),  @user.profile.get_fb_option(:profile_feed) == feed_identifier,{ :style => "float: none; vertical-align: middle;"})%> <%= feed.name%></p>
+			<% end %>
+		</div>
+		
+		<div class="feed_options">
+			<h3>DISPLAY OTHER:</h3>
+			<% profile_feeds.each do |option|%>
+				<p>
+					<input id="feed_options" 
+						name="profile_feed" 
+						type="radio" 
+						value="<%= option %>"
+						<%= "checked='checked'" if @user.profile.get_fb_option(:profile_feed) == option%>
+						style="float: none; vertical-align: middle;" />
+					<%= option.gsub('_', ' ').upcase%>
+				</p>
+			<% end %>
+		</div>
+		
+		<%= submit_tag "UPDATE", :style => "margin: 0"%>
+	</form>
+</div>

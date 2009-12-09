@@ -1,0 +1,20 @@
+<% asset_class ||= "video" %>
+<% no_overs ||= false %>
+	<ul class="nav section_heading">
+		<li class="heading">MY <%= asset_class.upcase.gsub('_','&nbsp;') + "S:"%></li>
+		<% if show_filters == 1 %>
+		<li><%= link_to "FEATURED", "" %>  |</li>
+        <li><%= link_to "MOST VIEWED", "" %>  |</li>
+        <li><%= link_to "TOP RATED", "" %>  |</li>
+        <li><%= link_to "MOST DISCUSSED", "" %></li>
+		<% end %>
+	</ul>
+<div class="thumb_list" id="<%= asset_class + "_list"%>">
+	
+	<div id="<%= "#{asset_class}_thumb_block" %>">
+	<%# @asset_class = asset_class %>
+		<%= render :partial => "layouts/asset_thumb", :collection => objects, :locals => {:asset_class => (no_overs ? nil : asset_class)} %>
+	</div>
+	
+	<div class="clear"><!-- --></div>
+</div>

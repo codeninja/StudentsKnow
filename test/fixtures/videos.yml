@@ -1,0 +1,128 @@
+# == Schema Information
+# Schema version: 57
+#
+# Table name: videos
+#
+#  id            :integer(11)     not null, primary key
+#  user_id       :integer(11)     
+#  name          :string(255)     
+#  description   :string(255)     
+#  university    :string(255)     
+#  class_number  :string(255)     
+#  professor     :string(255)     
+#  subject       :string(255)     
+#  book_title    :string(255)     
+#  book_author   :string(255)     
+#  chapter       :string(255)     
+#  isbn          :string(255)     
+#  created_at    :datetime        
+#  updated_at    :datetime        
+#  in_q          :boolean(1)      
+#  upload_ticket :string(255)     
+#  approved      :boolean(1)      
+#
+
+qv1:
+    id: 1
+    user_id: 1
+    name: test video 1
+    description: test video 1 description 
+    university: university name
+    class_number: 2000
+    professor: Dr. Smartypants
+    subject: English
+    book_title: Smart English
+    book_author: Dr. Smartypants
+    chapter: 1
+    isbn: 5564das654adsd
+    created_at: <%= 2.days.ago.to_s :db %>
+    
+qv2:
+    id: 2
+    user_id: 1
+    name: test video 2
+    description: test video 2 description 
+    university: university name2
+    class_number: 2000
+    professor: Dr. Smartypants Jr.
+    subject: English
+    book_title: Smarter English
+    book_author: Dr. Smartypants Jr.
+    chapter: 3
+    isbn: 5dfg64das654adsd
+    created_at: <%= 3.days.ago.to_s :db %>
+    
+av1:
+    id: 3
+    user_id: 2
+    name: test video 1
+    description: test video 1 description 
+    university: university name
+    class_number: 2000
+    professor: Dr. Smartypants
+    subject: English
+    book_title: Smart English
+    book_author: Dr. Smartypants
+    chapter: 1
+    isbn: 5564das654adsd
+    created_at: <%= 2.days.ago.to_s :db %>
+
+av2:
+    id: 4
+    user_id: 2
+    name: test video 2
+    description: test video 2 description 
+    university: university name2
+    class_number: 2000
+    professor: Dr. Smartypants Jr.
+    subject: English
+    book_title: Smarter English
+    book_author: Dr. Smartypants Jr.
+    chapter: 3
+    isbn: 5dfg64das654adsd  
+    created_at: <%= 3.days.ago.to_s :db %> 
+    
+bobv1:
+    id: 5
+    user_id: 3
+    name: test video 1
+    description: test video 1 description 
+    university: university name
+    class_number: 2000
+    professor: Dr. Smartypants
+    subject: English
+    book_title: Smart English
+    book_author: Dr. Smartypants
+    chapter: 1
+    isbn: 5564das654adsd
+    created_at: <%= 2.days.ago.to_s :db %>    
+    
+bobv2:
+    id: 6
+    user_id: 3
+    name: test video 1
+    description: test video 1 description 
+    university: university name
+    class_number: 2000
+    professor: Dr. Smartypants
+    subject: English
+    book_title: Smart English
+    book_author: Dr. Smartypants
+    chapter: 1
+    isbn: 5564das654adsd
+    created_at: <%= 2.days.ago.to_s :db %>
+    
+billv1:
+    id: 7
+    user_id: 4
+    name: test video 1
+    description: test video 1 description
+    university: university name
+    class_number: 2000
+    professor: Dr. Smartypants
+    subject: English
+    book_title: Smart English
+    book_author: Dr. Smartypants
+    chapter: 1
+    isbn: 5564das654adsd
+    created_at: <%= 2.days.ago.to_s :db %>

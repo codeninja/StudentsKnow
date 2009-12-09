@@ -1,0 +1,15 @@
+<% all_done ||= false %>
+<h2>Information Saved</h2>
+<% if all_done %>
+	<p>You are finished! Revise your video information if desired, and click the "Continue" button below.</p>
+	<script type="text/javascript">$('continue_button').replace("<%= link_to('CONTINUE', video_path(@video), :id => 'continue_button', :class => 'button')%>");</script>
+<% else %>
+	<p>
+	Please upload your video, or wait while it finishes.  It is very important that you do not leave this page until the upload is complete.
+	</p>
+<% end %>
+
+<p>
+	You may review and edit the information below.
+</p>
+<%= render :partial => "videos/video_info_form", :locals => {:actionurl => edit_video_info_url(@video)}%>

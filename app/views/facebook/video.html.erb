@@ -1,0 +1,125 @@
+<ul id="video_heading" class="nav section_heading">
+	<li class="heading"><%= @video.name %></li>
+</ul>
+
+<div class="player_video_info" style="width: 520px; margin-top: 10px; border: none">
+    <div id="player">	
+		<script src="/flash/AC_OETags.js" language="javascript"></script>
+		<script language="JavaScript" type="text/javascript">
+
+		// -----------------------------------------------------------------------------
+		// Globals
+		// Major version of Flash required
+		var requiredMajorVersion = 9;
+		// Minor version of Flash required
+		var requiredMinorVersion = 0;
+		// Minor version of Flash required
+		var requiredRevision = 28;
+		// -----------------------------------------------------------------------------
+
+
+
+		// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+		var hasProductInstall = DetectFlashVer(6, 0, 65);
+		// Version check based upon the values defined in globals
+		var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+		if ( hasProductInstall && !hasRequestedVersion ) {
+			// DO NOT MODIFY THE FOLLOWING FOUR LINES
+			// Location visited after installation is complete if installation is required
+			var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
+			var MMredirectURL = window.location;
+		    document.title = document.title.slice(0, 47) + " - Flash Player Installation";
+		    var MMdoctitle = document.title;
+
+			AC_FL_RunContent(
+				"src", "/flash/playerProductInstall",
+				"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+"",
+				"width", "100%",
+				"height", "100%",
+				"align", "middle",
+				"id", "FLVPlayer",
+				"quality", "high",
+				"bgcolor", "#869ca7",
+				"name", "FLVPlayer",
+				"allowScriptAccess","sameDomain",
+				"type", "application/x-shockwave-flash",
+				"pluginspage", "http://www.adobe.com/go/getflashplayer"
+			);
+		} 
+		else if (hasRequestedVersion) {
+			// if we've detected an acceptable version
+			// embed the Flash Content SWF when all tests are passed
+			AC_FL_RunContent(
+					"src", "<%= @swf_loc.sub(/.swf$/,'') %>",
+					"width", "100%",
+					"height", "100%",
+					"align", "middle",
+					"id", "FLVPlayer",
+					"quality", "high",
+					"bgcolor", "#000000",
+					"name", "FLVPlayer",
+					"allowScriptAccess","sameDomain",
+					"allowFullScreen","true",
+					"type", "application/x-shockwave-flash",
+					"pluginspage", "http://www.adobe.com/go/getflashplayer",
+					"flashVars", "<%= @flashvars %>"
+			);
+		  } else {  // flash is too old or we can't detect the plugin
+		    var alternateContent = 'Alternate HTML content should be placed here. '
+		  	+ 'This content requires the Adobe Flash Player. '
+		   	+ '<a href=http://www.adobe.com/go/getflash/>Get Flash</a>';
+		    document.write(alternateContent);  // insert non-flash content
+		}
+		</script>
+		<noscript>
+			<% embedded ||= false %>
+			<% if embedded %><div id="sk_player_<%= @video.id%>" style="height:380px; overflow:hidden; text-align:center; width:460px;"><% end %>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+					id="FLVPlayer" width="100%" height="100%"
+					codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+					<param name="movie" value="<%= @swf_loc.sub(/.swf$/,'') %>" />
+					<param name="quality" value="high" />
+					<param name="bgcolor" value="#000000" />
+					<param name="allowScriptAccess" value="sameDomain" />
+					<param name="flashVars" value="<%= @flashvars %>" />
+					<embed src="<%= @swf_loc %>" quality="high" bgcolor="#869ca7"
+						width="100%" height="100%" name="FLVPlayer" align="middle"
+						play="true"
+						loop="false"
+						quality="high"
+						allowScriptAccess="sameDomain"
+						allowFullScreen="true"
+						type="application/x-shockwave-flash"
+						pluginspage="http://www.adobe.com/go/getflashplayer"
+						flashVars="<%= @flashvars %>">
+					</embed>
+			</object>
+			<% if embedded %></div><% end %>
+		</noscript>
+	</div>
+
+    <div class="clear"></div>
+
+	<div class="element_info">
+		<div class="element_title">
+			TITLE: <%= white_list @video.name %>
+		</div>
+		<div class="element_desc">
+			<%= white_list @video.description %>
+		</div>
+		<div class="element_tags">
+            CATEGORY: <%= link_to(@video.category,{:action => :browse, :category => @video.category}) %><br/>
+			TAGS: <%= @video.regular_tags.join(', ')%>
+		</div>
+	</div>
+	<div class="element_author_pic">
+		<%= user_profile_pic_link(@video.user) %><br/>
+		<%= link_to(@video.user.login, user_path(@video.user)) %>
+	</div>
+	<div class='clear'></div>
+	<p align=right><%= link_to("<< Go Back", session[:return_to])%></Go>
+</div>
+	
+
+

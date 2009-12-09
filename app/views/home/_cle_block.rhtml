@@ -1,0 +1,15 @@
+<div id="welcome_box">
+  <div style='height: 47px;'></div>
+  <a id="create_btn" href="#" onMouseOver="rotator.show('create')">&nbsp;</a>
+  <a id="learn_btn" href="#" onMouseOver="rotator.show('learn')">&nbsp;</a>
+  <a id="earn_btn" href="#" onMouseOver="rotator.show('earn')">&nbsp;</a>
+  <img src="/images/learn.png" width=0 height=0/>
+  <img src="/images/earn.png" width=0 height=0/>
+</div>
+
+<%= render :partial => "layouts/list", :locals => {:section_id => "new_knows_list", :page => @knows, :default_order => 'date'}%>
+
+<script type="text/javascript">
+    $('content_top_rounded_corners').setStyle({backgroundImage: 'url(/images/content_top_curve_green.png)'})
+	var rotator = new CLERotate('welcome_box',10)	
+</script>

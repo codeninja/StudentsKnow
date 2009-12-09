@@ -1,0 +1,56 @@
+<h1>Dashboard</h1>
+<div id="dashboard" style="height: 600px;">
+	Coming Soon!
+
+<!--      <h2>You currently have <%= @vid_count.to_s %> videos posted in the system.</h2>
+			<% if @view_rate.nil? %>
+				<% rate = 0.01 %>
+			<% else %>
+				<% rate = @view_rate.rate.to_f %>
+			<% end %>
+			
+
+			<% if @referral_rate.nil? %>
+				<% referral_rate = 0.01 %>
+			<% else %>
+				<% referral_rate = @referral_rate.rate.to_f %>
+			<% end %>
+	 <h2>The current payout rate is <%= rate %> per view and the current referral rate is <%= referral_rate %> per referral view</h2>
+	     <br/>
+		<table style="padding-left: 50px;" >
+
+				<tr class="section_heading"><td class="month" style="padding-right: 0px;">Month</td><td class="revenue", style="padding-right: 40px;">Ad Revenue</td><td class="views" style="padding-right: 50px;">Views</td><td class="referrals" style="padding-right: 55px;">Referrals</td><td class="payment">Payment</td></tr>
+
+			<% months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %>
+
+			<% total = 0 %>
+			<% total_views = 0 %>
+			<% total_referrals = 0 %>
+			
+
+			<% for mon in months %>
+					<% referrals = rand(100) + rand(10) %>
+					<% total_referrals = total_referrals + referrals %>
+					<% views = rand(100) + rand(10) %>
+					<% total_views = total_views + views %>
+			        <% revenue =  (rand(100) + rand(10) + rand).round(2) %>
+					<% payment = (views * rate) + (referrals * referral_rate) %>
+					<% total = total + payment %>
+					<tr>
+						<td class="month"><%= mon %></td><td class="revenue"><%= sprintf('%.2f',revenue) %></td>
+						<td class="views"><%= views %></td><td class="referrals"><%= referrals %></td>
+						<td class="payment"><%=  sprintf('%.2f',  (views * rate) + (referrals * referral_rate)) %></td>
+					</tr>
+					
+		    <% end %>
+
+
+				<tr><td class="total_views"><br/>Total Views</td><td class="total_referrals"><br/>Total Referrals</td><td class="total_remuneration"><br/>Remuneration</td></tr>
+				<tr><td class="total_views"><%= total_views %></td><td class="total_referrals"><%= total_referrals %></td><td class="total_remuneration">$<%= sprintf('%.2f',  total) %></td></tr>
+		</table> -->
+		<br/>
+		<%= link_to "Back to Profile", user_path(self.current_user) %>
+		
+</div>
+
+

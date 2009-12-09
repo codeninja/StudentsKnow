@@ -1,0 +1,9 @@
+
+<div id="search">
+    <% form_for :video_search,  :url => videos_search_path  do |s| %>
+        <%= s.text_field :item, {:size => 40, :onclick => "$('search_item').style.background = '#fff';" }%> 
+        <%#= image_submit_tag("search.png", :class=>'search_img') %>
+        <%= submit_tag("SEARCH", :class=>'gray_submit') %>
+
+    <% end %>
+</div>

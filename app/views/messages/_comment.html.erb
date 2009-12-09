@@ -1,0 +1,19 @@
+<div class="message_board_entry">
+    <div class="entry_main">
+      <p class="entry_data"><%= (white_list comment.comment).gsub(/(\n|\r)/,'<br/>')%></p>
+      <% if comment.user_id == self.current_user.id%>
+           <p class="entry_user_actions">
+            <%= link_to("Edit", edit_message_comment_path(:id => comment.id, :message_id => comment.commentable.id))%>
+            <%= link_to("Delete", destroy_message_comment_path(:id => comment.id , :message_id => @message.id), :confirm => "Are you sure you want to delete this post?") %>
+          </p>
+      <% end if logged_in?%>
+    </div>
+    <div class="entry_user_info">
+       <%= comment.created_at.to_s(:short)%>
+      <div class="element_author_pic">
+              <%= link_to(comment.user.login, user_path(:id => comment.user.login)) %><br/>
+              <%= user_profile_pic_link(comment.user) %>
+      </div>
+    </div>
+    <div class="clear"><!-- --></div>
+</div>

@@ -1,0 +1,28 @@
+<h2><%= @video.name%></h2>
+
+<p>
+	Description: <%= @video.description%>
+</p>
+
+<p>
+	Tags: <%= @video.tag_list%>
+</p>
+
+<p>
+	Asset Filename: <%= @video.videoasset.public_filename%>
+</p>
+
+<b>Asset Thumbnails:</b><br>
+<%= image_tag(@video.videoasset.public_filename(:thumb))%><br>
+Thumb: <%= @video.videoasset.public_filename(:thumb) %><br>
+
+<%= image_tag(@video.videoasset.public_filename(:screenshot))%><br>
+Screenshot: <%= @video.videoasset.public_filename(:screenshot)%><br>
+
+<p>
+	<%= image_tag(@video.videoasset.public_filename)%>
+</p>
+
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>

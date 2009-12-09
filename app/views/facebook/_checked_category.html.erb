@@ -1,0 +1,4 @@
+<li id="checked_category_<%= checked_category.id%>" class="checked_category">
+	<%= check_box( :category, checked_category.id, :checked => know_feed.categories.include?(checked_category), :style => "float: none;" )%>
+	<%= checked_category.name.upcase.gsub('-','&nbsp;')%>
+</li>

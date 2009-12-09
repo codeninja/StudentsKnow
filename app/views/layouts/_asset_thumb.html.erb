@@ -1,0 +1,24 @@
+<div class="asset_thumb related_image">
+	<% if object.asset %>
+		<% if asset_class%>
+			<% if asset_class == "favorite"%>
+				<%= link_to(image_tag(object.asset.public_filename(:thumb), 
+								:onmouseover => "#{"showmenu(event,asset_menus['favorite_#{object.id}'], #{object.id}, 'favorite', 200)" }", 
+								:onmouseout=>"delayhidemenu()"), eval("#{object.class.to_s.downcase}_path(object)"))  %>
+			<% else %>
+				<%= link_to(image_tag(object.asset.public_filename(:thumb), 
+								:onmouseover => "#{"showmenu(event,asset_menus['asset_#{object.id}'], #{object.id}, 'my', 150)" }", 
+								:onmouseout=>"delayhidemenu()"), eval("#{object.class.to_s.downcase}_path(object)"))  %>
+			<% end %>
+		<% else %>
+			<%= link_to(image_tag(object.asset.public_filename(:thumb)),  eval("#{object.class.to_s.downcase}_path(object)"))  %>
+		<% end %>
+	     <% unless object.rating.nil?%>
+		 <div class="image_grade_overlay">
+			<%= link_to(object.rating_letter, eval("#{object.class.to_s.downcase}_path(object)"), :class => "#{object.rating_letter[0,1].downcase}")%>
+		</div>
+		<% end %>
+	<% end %><br/>
+	<%= white_list(truncate(object.name,35))%>
+</div>
+

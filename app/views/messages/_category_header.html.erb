@@ -1,0 +1,6 @@
+<div class="mb_category_header">
+	<span class="mb_header_name_field"><%= category.name.upcase.gsub(/-/,'&nbsp;')%>&nbsp;&nbsp;&nbsp;<%= expand_widget("mb_threads_#{category.id}") if @categories%></span>
+	<span class="mb_header_field">POSTED BY</span>
+	<span class="mb_header_field">REPLIES</span>
+	<span class="mb_header_field">DATE POSTED</span>
+</div>

@@ -1,0 +1,26 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ messages_001:
+    user_id: 1
+    topic: message 1 subject
+    data: this is the data for message 1
+ messages_002:
+    user_id: 2
+    topic: message 2 subject
+    data: this is the data for message 2
+ messages_003:
+    user_id: 3
+    topic: message 3 subject
+    data: this is the data for message 3
+ messages_004:
+    user_id: 4
+    topic: message 4 subject
+    data: this is the data for message 4
+ messages_005:
+    user_id: 5
+    topic: message 5 subject
+    data: this is the data for message 5
+ messages_006:
+    user_id: 6
+    topic: message 6 subject
+    data: this is the data for message 6

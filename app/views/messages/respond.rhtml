@@ -1,0 +1,11 @@
+<div id="comment">
+    <h2>Create your Response</h2>
+   <%= error_messages_for :comment %>
+    <% form_for :comment, :url => save_response_path  do |f| -%>
+        <%= render :partial => "messages/reply_form", :locals=>{:f => f} %>
+            <div style="clear:both"></div>
+            <%= submit_tag 'Create Reply' %>
+    <% end %>
+ </div>
+
+<%= link_to 'Back', messages_path %>

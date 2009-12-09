@@ -1,0 +1,9 @@
+<%= error_messages_for :video %>
+
+<div class="upload_left" id="upload_left">
+	<%= render :partial => "form"%>
+</div>
+
+<div class="upload_right" id="upload_right">
+	<%= render :partial => "layouts/upload_page_right", :locals => {:filetype => "video"} %>
+</div>

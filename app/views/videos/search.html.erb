@@ -1,0 +1,13 @@
+<div id="left_side">
+	<h1>Search Results for: <i>'<%= h @search_item %>'</i></h1>
+	<%= render :partial => "layouts/list", :locals => {:section_id => "videos", :page => @videos, :hide_sort_links => true}%>
+	
+	<% if @users.size > 0 %>
+		<%= render :partial => "home/user_list", :locals => {:section => "USERS", :section_class => "user_search", :collection => @users} %>
+	<% end %>
+</div>
+
+<div id="right_side">
+	<%= render :partial => 'layouts/get_started'%>
+</div>
+

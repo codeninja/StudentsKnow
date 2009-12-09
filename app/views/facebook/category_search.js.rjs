@@ -1,0 +1,2 @@
+page.replace "category_add_#{@add_id}", :partial => "facebook/checked_category", :locals => {:checked_category => @category}
+page.insert_html :bottom, "edit_feed_categories_list", :partial => "facebook/category_search_box"

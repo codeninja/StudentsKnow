@@ -1,0 +1,7 @@
+if @success
+  page.remove :email_form
+  page.replace_html :email_form_error, "#{flash[:notice] if flash[:notice]}"
+else
+  page.replace_html :email_form_error, "#{flash[:notice] if flash[:notice]} #{flash[:error] if flash[:error]}"
+end
+

@@ -1,0 +1,26 @@
+<h1><%= h@adbackend.name %></h1>
+
+<br/>
+<h2>Available Ads: <%= @adbackend.ads.count %></h2>
+<%= link_to("New Ad", new_admin_adbackend_ad_path(:adbackend_id => @adbackend.id)) %>
+<br/>
+<br/>
+<table class="offer_table">
+  <tr class="header">
+    <th>Name</th>
+    <th>Size</th>
+    <th>W</th>
+    <th>H</th>
+	<th>Weight</th>
+    <th>Text</th>
+    <th width="300px">Code</th>
+    <th colspan=3>Actions</th>
+  </tr>
+  <tr>
+    <%= render :partial => "admin/ads/ad", :collection => @adbackend.ads %>
+  </tr>
+  
+</table>
+
+<br><br>
+<%= link_to("Back", admin_adbackends_path) %>

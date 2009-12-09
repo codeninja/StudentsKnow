@@ -1,0 +1,36 @@
+<div id="cat_table_rows_data_<%=cat.id%>" >
+
+<table >
+
+                       <% for message in @messages %>
+                            <tr>
+                                <td class="cat_name cat_heading_name" >
+									<%= link_to( message.topic[0..50] , replies_list_path(message.id), :title => "Click to see details and reply list") %></td>
+								<td class="posted_by cat_heading_small"><%=message.user.login.capitalize %></td>
+								<td class="cat_replies cat_heading_small"><%= link_to(message.comments.size.to_s, replies_list_path(message.id), :title => "Click to see details and reply list" )%></td>
+								<td class="cat_date cat_heading_small"> <%= show_time(message.created_at) %></td>
+                            </tr>
+                       <% end %>
+</table>                 
+                       <div class="message_board_footer">
+                           <span class="new_message_link" >
+                                       <% if logged_in? %>
+                                           <% if cat.name == "Site-Feedback" %>
+                                        		<%= link_to_remote "SEND SITE FEEDBACK", :url => create_message_path(:id => cat.id), :html => {:title => "Click to start a new discussion"} %>
+										   <% else %>
+												<%= link_to_remote "START A NEW DISCUSSION", :url => create_message_path(:id => cat.id), :html => {:title => "Click to start a new discussion"} %>
+											<% end %>
+                                       <% else %>
+                                            <%= link_to "LOG IN TO START A NEW DISCUSSION", login_path %>
+                                       <% end %>
+  </span>
+
+                             <span class="message_paginator">
+
+                                 <%= 
+									# WillPaginate::ViewHelpers.pagination_options[:param_name] = "#{cat.id}"
+									#will_paginate @messages, :remote_options=> {:url => {:action=>'remote_paginate', :cat_id=>cat.id}, :page => params[:page]}
+									will_paginate @messages, :remote_options=> {:url => {:action=>'remote_paginate', :cat_id=>cat.id }}%>
+                              </span>
+                          </div>                      
+</div>

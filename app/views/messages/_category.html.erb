@@ -1,0 +1,9 @@
+<div class="mb_category" id="category_<%= category.id%>">
+	<%= render :partial => "messages/category_header", :locals => {:category => category}%>
+	<div id="mb_threads_<%= category.id%>" class="mb_threads" style="display: none;">
+		<%= render :partial => "messages/message_short", :collection => @messages[category.name]%>
+		<div class="clear" style="height: 3px; border-bottom: 1px solid #ccc;"><!-- --></div>
+		&nbsp;<%= link_to("Post a Message", new_message_path(:category => category.name))%> | 
+		<%= link_to("See More Posts in #{strip_dashes category.name}", message_category_path(:id => category.name))%>
+	</div>
+</div>

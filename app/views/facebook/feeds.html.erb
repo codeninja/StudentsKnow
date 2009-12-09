@@ -1,0 +1,24 @@
+<div id="feeds">
+	<ul class="nav section_heading">
+		<% @user.know_feeds.each do |listed_feed| %>
+			<% if listed_feed == @active_feed %>
+				<li class="heading"><%= listed_feed.name.upcase%></li>
+			<% else %>
+				<li><%= link_to(listed_feed.name.upcase, {:controller => :facebook, :action => :feeds, :feed_id => listed_feed.id})%>
+			<% end %>
+		<% end %>
+	</ul>
+	<% if @active_feed %>
+		<ul class="nav section_heading secondary">
+			<li><%= link_to("EDIT FEED", {:controller => :facebook, :action => :edit_feed, :id => @active_feed.id})%></li>
+			<li><%= link_to("NEW FEED", {:controller => :facebook, :action => :feeds, :new => true})%></li>
+			<li><%= link_to("REMOVE FEED", { :controller => :facebook, :action => :remove_feed, :id => @active_feed.id, :method => :post,},  
+							 :confirm => "Are you sure you want to remove this feed?")%>
+		</ul>
+		<%= render :partial => "facebook/object", :collection => @active_feed.knows %>
+		<p style="margin: 10px"><%= "Nothing to show" if @active_feed.knows.empty? %></p>
+	<% else %>
+		<%= render :partial => "facebook/new_feed"%>
+	<% end %>
+	
+</div>

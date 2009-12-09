@@ -1,0 +1,5 @@
+<%= render :partial => "facebook/list", 
+		   :locals => { :section_id => "new_knows_list", 
+						:page => Video.find_with_tags([tag.name], { :order => 'date', :limit => 5, :paginate => true}), 
+						:default_order => 'date', 
+						:hide_sort_links => false } %>

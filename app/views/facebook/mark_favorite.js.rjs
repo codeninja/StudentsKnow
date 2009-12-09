@@ -1,0 +1,1 @@
+page.replace "video_#{@video.id}", :partial => "facebook/object", :locals => {:object => @video}

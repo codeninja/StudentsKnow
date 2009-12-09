@@ -1,0 +1,18 @@
+<% hide_sort_links ||= false %>
+<% default_order ||= 'date'%>
+<ul id="<%= section_id %>_heading" class="nav section_heading">
+	<%= render :partial => 'layouts/list_heading', :locals => {:page => page, :section_id => section_id, :hide_sort_links => hide_sort_links, :default_order => default_order}%>
+</ul>
+
+<div id="<%= section_id %>" class="list">
+	
+    <div id="<%= section_id %>_list">
+        <%= render :partial => "layouts/object", :collection => (page.is_a?(Hash) ? page[:page] : page) %>
+    </div>
+
+	<% if page.is_a?(Hash)%>
+		<div id="<%= section_id %>_page_links" class="page_links">
+			<%= render :partial => "layouts/pagination_links", :locals => {:section_id => section_id, :page => page} %>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,20 @@
+<div id="change_password">
+	<h1>Change Password</h1>
+
+	<%= error_messages_for :users %>
+
+	<% form_for(@user, :url => update_password_url(:id => @user.login)) do |f| %>
+	  <p><label for="password">Password:</label>
+		<%= f.password_field :password%>
+	  </p>
+	  <p><label for="password_confirmation">Confirm Password:</label>
+		<%= f.password_field :password_confirmation %>
+	  </p>
+	  <p>
+	    <%= submit_tag("Update", :style => "margin-left: 300px;") %>
+		<%= link_to 'Cancel', user_path(self.current_user) %>
+	  </p>
+	<% end %>
+
+	
+</div>

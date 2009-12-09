@@ -1,0 +1,10 @@
+<div id="send_to_friends">
+	<h2>Copy the following code to embed a link to "<%= @video.name %>" on your page:</h2>
+	<br/>
+	<p style="padding-left: 50px;">
+	<input size=50 type='text' value="<%= encode_entities(render(:partial => "videos/player_noscript", :locals => {:embedded => true})).gsub(/[\n\r\t]/,' ').gsub(/  +/,' ')%>"  onclick="select_all(this)"/>	
+	</p>
+	<div style="text-align: center; width: 100x; margin: 20px auto;">
+		<%= submit_tag("Back", :class => "gray_submit", :onclick =>"history.go(-1)" )%>
+	</div>
+</div>

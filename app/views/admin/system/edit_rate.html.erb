@@ -1,0 +1,4 @@
+	<% form_for :rate, :url => edit_rate_path do |f| -%>
+			<%= render :partial => "admin/system/form", :locals => {:f => f } %>
+			<%= submit_tag 'Save Rate' %> </p>
+	<% end %>

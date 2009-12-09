@@ -1,0 +1,23 @@
+<% embedded ||= false %>
+<% if embedded %><div id="sk_player_<%= @video.id%>" style="height:380px; overflow:hidden; text-align:center; width:460px;"><% end %>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+		id="FLVPlayer" width="100%" height="100%"
+		codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+		<param name="movie" value="<%= @swf_loc.sub(/.swf$/,'') %>" />
+		<param name="quality" value="high" />
+		<param name="bgcolor" value="#000000" />
+		<param name="allowScriptAccess" value="sameDomain" />
+		<param name="flashVars" value="<%= @flashvars %>" />
+		<embed src="<%= @swf_loc %>" quality="high" bgcolor="#869ca7"
+			width="100%" height="100%" name="FLVPlayer" align="middle"
+			play="true"
+			loop="false"
+			quality="high"
+			allowScriptAccess="sameDomain"
+			allowFullScreen="true"
+			type="application/x-shockwave-flash"
+			pluginspage="http://www.adobe.com/go/getflashplayer"
+			flashVars="<%= @flashvars %>">
+		</embed>
+</object>
+<% if embedded %></div><% end %>

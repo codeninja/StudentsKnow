@@ -1,0 +1,9 @@
+<h1>Edit Ad Page: <%= h @adpage.name %></h1>
+
+
+<%= error_messages_for :adpage %>
+<% form_for @adpage, :url => admin_ad_page_path do |@f| %>
+    <%= render :partial => "form" %>
+    <%= submit_tag "Update" %>
+    <%= link_to("Cancel", admin_ad_page_path(@adpage)) %>
+<% end  %>

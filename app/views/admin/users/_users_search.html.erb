@@ -1,0 +1,9 @@
+<div class="user_search_form">
+
+    <% form_for :admin_user_search,  :url => admin_users_search_path( )  do |s| %>
+        <label for="item">Search</label>
+        <%= s.text_field :item, {:size => 40, :onclick => "$('search_item').style.background = '#fff';" }%> 
+        <%= image_submit_tag("search.png", :class=>'search_img') %><br/>
+    <% end %>
+  </div>
+

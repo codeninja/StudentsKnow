@@ -1,0 +1,14 @@
+<tr class="<%= row_counter.modulo(2) == 0 ? "row_light" : "row_dark" %>">
+ 
+
+   <td class="cat_name"><%= link_to( row.topic[0..50] , admin_replies_list_path(row.id), :title => "Click to see details and reply list") %></td>
+	<td class="posted_by"><%=row.user.login.capitalize %></td>
+	<td class="cat_replies"><%= link_to(row.comments.size.to_s, admin_replies_list_path(row.id), :title => "Click to see details and reply list" )%></td>
+	<td class="cat_date"> <%= show_time(row.created_at) %></td>
+      <td><%= link_to("Edit", admin_edit_message_path(:id => row.id))%></td>
+	<td><%= link_to("Delete", admin_delete_message_path(:id => row.id), :confirm => "Deleting a message will also delete all its replies and cannot be undone.  Are you sure?")%> </td>
+
+  </tr>
+
+
+

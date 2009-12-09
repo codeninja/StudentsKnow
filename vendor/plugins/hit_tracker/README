@@ -1,0 +1,42 @@
+# josh stephenson for elctech.com (josh@elctech.com)
+
+HitTracker
+==========
+
+HitTracker allows you to use your DB to track access to various hits to your models.
+WARNING!  This can exponentially increase your db hits.  Not recommended for heavily
+trafficked sites
+
+Migration
+==========
+class CreateHits < ActiveRecord::Migration
+  def self.up
+    create_table :hits do |t|
+      t.column :hittable_type, :string
+      t.column :hittable_id, :integer
+      t.column :kind, :string
+    end
+  end
+
+  def self.down
+    drop_table :hits
+  end
+end
+
+Usage
+==========
+
+Add the following to the model you want to track:
+
+class Model < ActiveRecord::Base
+	track_hits
+end
+
+
+In your controller, when you decide to create a hit on the model, do this:
+
+hit(@object, 'PageView') # where 'PageView' can be any string you want to use to 
+												 # distinguish the hit
+
+# This works for a collection of items too!
+hit(@collection, 'SearchResult')

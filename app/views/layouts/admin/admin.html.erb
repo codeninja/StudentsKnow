@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Admin::<%= request.env["REQUEST_PATH"].split('/')[1] %></title>
+  <%= stylesheet_link_tag 'admin' %>
+</head>
+<body>
+
+<div id="content">
+    <% if flash[:notice] %><div class="notice"><%= flash[:notice] %></div><% end %>
+    <% if flash[:error] %><div class="error"><%= flash[:error] %></div><% end %>
+    <div class="clear"><!----></div>
+        <%= render :partial => "layouts/admin/nav" %>
+		<br/><br/>
+
+    <div id="content_container">
+        <%=@content_for_layout%>
+        <div class="clear"><!----></div>
+    </div>
+    <div id="footer">STUDENTS KNOW ADMIN SYSTEM</div>
+    
+</div>
+</body>
+</html>

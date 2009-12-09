@@ -1,0 +1,9 @@
+xml.instruct! :xml, :version=>"1.0" 
+xml.advertisements do
+  @ads.each do |ad|
+    xml.advertisement do
+      xml.title ad.display_text
+      xml.url ad.code
+    end
+  end
+end

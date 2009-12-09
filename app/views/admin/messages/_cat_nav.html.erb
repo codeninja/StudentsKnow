@@ -1,0 +1,13 @@
+<div id="msg_cats">
+              
+              <% unless @categories.nil?  # had to put this in for the rspec tests to work%>
+                <h3> or Select category to review </h3>
+                <ul class="nav">
+                <% for cat in @categories %>
+                
+                    <li><%= link_to cat.name, admin_messages_path(cat.id)%></li>
+                      
+                <% end %> 
+              </ul>                
+              <% end %>
+</div>

@@ -1,0 +1,31 @@
+
+<div id="left_side">
+	   <%= render :partial => "home/cle_block"%>   
+</div>
+
+<div id="right_side">
+	<!-- 
+  	<div class='padded_content' style='text-align:center'>
+		<%#= link_to image_tag( "itunes_promo.gif" ), upload_url %>
+	</div> -->
+	
+	<%= render :partial => 'layouts/get_started' %>
+	
+	<%= render :partial => "layouts/facebook_promo"%>
+	
+	<%= render :partial => "home/user_list", :locals => {:section => "TOP POSTERS", :section_class => "top_posters", :collection => @top_posters} %>
+	<%#= render :partial => "layouts/special_ad1" %>
+	
+	<div class='padded_content' style='text-align:center'>
+		<%#= link_to image_tag( "itunes_promo.gif" ), upload_url %>
+		
+	</div>
+	
+	<%#= render :partial => "home/right_ads" %>
+	<%#= render :partial => "home/right_ads2" %>
+</div>
+
+                 
+
+
+

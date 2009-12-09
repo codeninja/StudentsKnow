@@ -1,0 +1,9 @@
+<h1><%= h @adbackend.name%>: New Ad</h1>
+
+<%= error_messages_for :ad %>
+
+<% form_for :ad, :url => admin_adbackend_ads_path(:adbackend_id => @adbackend.id) do |@f| %>
+    <%= render :partial => "form" %>
+    <%= @f.submit "Create" %>
+    <%= link_to("Cancel", admin_adbackend_path(:id => @adbackend.id)) %>
+<% end %>

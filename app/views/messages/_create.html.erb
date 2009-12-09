@@ -1,0 +1,5 @@
+ <% remote_form_for :message, :url => save_message_path(:id => @cat.id, :user_id => @user_id)  do |f| -%>
+        <%= render :partial => "messages/form", :locals=>{:f => f, :cat => @cat} %>
+            <div style="clear:both"></div>
+            <%= submit_tag 'Create Message' %>
+ <% end %>

@@ -1,0 +1,36 @@
+<div class="list_element" id="<%= object.class.to_s.downcase%>_<%= object.id %>">
+	<% if object.asset %>
+	<div class="related_image">
+		<%= link_to(image_tag(object.asset.public_filename(:thumb), :border => 0 ), eval("#{object.class.to_s.downcase}_path(object)"))  %>
+		<% unless object.rating.nil?%>
+			<div class="image_grade_overlay">
+				<%= link_to(object.rating_letter, eval("#{object.class.to_s.downcase}_path(object)"), :class => "#{object.rating_letter[0,1].downcase}")%>
+			</div>
+		<% end%>
+	</div>
+	<div class="element_info">
+		<!-- <span class="uploaded_date">uploaded <%= object.created_at.to_s(:short)%> | length: <%= duration_as_minutes(object.asset.length || "00:00:00") %> minutes</span> -->
+		<div class="element_title">
+			<span class="element_title"><%= link_to(white_list( truncate(object.name,35)),eval("#{object.class.to_s.downcase}_path(object)") ) %></span><br/>
+			
+		</div>
+                 
+		<div class="element_desc">
+			<%= white_list truncate(object.description,75) %> 
+		</div>
+		
+		<!-- <div class="element_tags">
+            MORE IN: <%= link_to(object.category.upcase.gsub(/-/,'&nbsp;'), eval("#{object.class.to_s.downcase}s_cat_path(:category => object.category)"))%><br/>
+			Tags: <%= object.regular_tags[0..5].collect{|t| "#{link_to(t, search_url(:search => t, :controller => (object.class.class_name.downcase + 's')))}"}.join(', ')%>
+		</div> -->
+	</div>
+	<div class='element_poster'>
+		<p class='author'>By: <%= link_to(object.user.login.upcase, user_path(object.user)) %></p>
+		<p class="uploaded_date"><%= object.created_at.to_s(:short)%></p>
+		<p class='length'> <%= duration_as_minutes(object.asset.length || "00:00:00") %> minutes</p>
+	</div>
+	<% else %>
+		<% logger.info "Object #{object.id} is missing an asset "%>
+	<% end%>
+	<div class="clear"><!-- --></div>
+</div>

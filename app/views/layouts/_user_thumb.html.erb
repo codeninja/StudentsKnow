@@ -1,0 +1,10 @@
+<li class="user_thumb">
+
+	<%= link_to(user_profile_pic_link(user_thumb), user_path(user_thumb))%>
+    <p>
+       <span> <%= link_to user_thumb.login.upcase, user_path(user_thumb)%></span><br/>
+        Views: <%= user_thumb.total_views %><br/>
+        Posts:  <%= user_thumb.total_posts %><br/>
+        Average Rating: <%= user_thumb.avg_rating %>
+    </p>
+</li>
