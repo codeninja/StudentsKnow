@@ -33,7 +33,7 @@ class Asset < ActiveRecord::Base
   #  3 => error converting
 
   @content_type_string = "image"
-  DEFAULT_ATTACHMENT_OPTS = { :storage => :file_system, :path_prefix => 'public/assets'}
+  DEFAULT_ATTACHMENT_OPTS = { :storage => :file_system, :path_prefix => 'public/system/assets'}
   
   has_attachment DEFAULT_ATTACHMENT_OPTS
   # validates_as_attachment
