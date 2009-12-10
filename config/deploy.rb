@@ -40,7 +40,7 @@ if ENV['DEPLOY'] == 'PRODUCTION'
   puts "Deploying to PRODUCTION..."
   server production_server, :app, :web, :db, :primary => true
   set :deploy_target, "production"
-  set :branch, "production"
+  set :branch, "master"
 else
   puts "Deploying to STAGING..."
   server staging_server, :app, :web, :db, :primary => true
