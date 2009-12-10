@@ -17,9 +17,9 @@
 set :application, "studentsknow"
 set :staging_server, "staging.example.com"
 set :production_server, "studentsknow.dnsalias.com"
-set :user, :username
+set :user, "studentsknow"
 set :repository, "g@masterwebdesign.dyndns.org:#{application}.git"
-set :config_files, %w( database.yml facebooker.yml)
+set :config_files, %w( database.yml )
 ###################################
 
 # System Options
