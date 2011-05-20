@@ -15,10 +15,10 @@
 
 ### CONFIG: Change ALL of following
 set :application, "studentsknow"
-set :staging_server, "staging.example.com"
-set :production_server, "studentsknow.dnsalias.com"
+set :staging_server, "-- YOUR STAGING SERVER URL --"
+set :production_server, "-- YOUR PRODUCTION SERVER URL --"
 set :user, "studentsknow"
-set :repository, "g@masterwebdesign.dyndns.org:#{application}.git"
+set :repository, "git@github.com:codeninja/StudentsKnow.git"
 set :config_files, %w( database.yml )
 ###################################
 
